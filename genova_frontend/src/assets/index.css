@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { @apply border-border; }
+  body {
+    @apply bg-background text-foreground;
+    font: 14px/1.5 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-variant-numeric: tabular-nums;
+  }
+  button, input, select, textarea { font: inherit; }
+  button, a, input, select, textarea, summary { -webkit-tap-highlight-color: transparent; }
+  :focus-visible { outline: 2px solid var(--action-primary); outline-offset: 3px; }
+  input:not([type=checkbox]):not([type=radio]):not([type=file]), select { min-height: 36px; border-radius: 8px; }
+  textarea { border-radius: 8px; }
+  input[type=checkbox], input[type=radio] { accent-color: var(--action-primary); }
+  h1 { font-size: 24px; font-weight: 600; }
+  h2 { font-size: 16px; font-weight: 600; }
+  th { font-weight: 600; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  }
+}
+
+@layer components {
+  .workbench { background: var(--page-bg); color: var(--text-primary); }
+  .workbench-page { padding: 24px; }
+  .workbench-panel { background: var(--surface); border: 1px solid var(--border-default); border-radius: 12px; }
+  .workbench-toolbar { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; padding: 16px; background: var(--surface-secondary); }
+  .workbench-toolbar label { display: flex; flex-direction: column; gap: 8px; font-size: 14px; }
+  .workbench-toolbar select { background: var(--surface); padding: 6px 12px; border: 1px solid var(--border-default); }
+  .status-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 8px; border-radius: 6px; font-size: 12px; white-space: nowrap; color: var(--text-secondary); background: var(--surface-secondary); }
+  .status-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+  .status-success { color: var(--status-success); background: var(--status-success-bg); }
+  .status-pending { color: var(--status-pending); background: var(--status-pending-bg); }
+  .status-failed { color: var(--status-failed); background: var(--status-failed-bg); }
+  .status-active { color: var(--action-primary); background: var(--selection-bg); }
+  @media (max-width: 767px) { .workbench-page { padding: 16px; } }
+}

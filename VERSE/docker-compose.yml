@@ -1,0 +1,347 @@
+x-service-logging: &service-logging
+  driver: json-file
+  options:
+    max-size: "10m"
+    max-file: "3"
+
+services:
+  redis:
+    logging: *service-logging
+    image: redis:7-alpine
+    container_name: genova-redis
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+    command: ["redis-server", "--save", "", "--appendonly", "yes", "--appendfsync", "always", "--requirepass", "${REDIS_PASSWORD}"]
+    ports:
+      - "127.0.0.1:6380:6379"
+    volumes:
+      - redisdata:/data
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli -a \"$$REDIS_PASSWORD\" ping | grep PONG"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  postgres:
+    logging: *service-logging
+    image: postgres:16-alpine
+    container_name: genova-postgres
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  backend-api:
+    logging: *service-logging
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    image: ${IMAGE_REPOSITORY:-genova}:backend-${PLATFORM_VERSION:-1.0.2}
+    container_name: genova-backend-api
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_URL=${REDIS_URL}
+      - REDIS_DISPATCH_QUEUE=genova:queue:dispatch
+      - REDIS_RESULT_QUEUE=genova:queue:result
+      - DATA_ROOT=/app/data
+      - DATA_RETENTION_ENABLED=${DATA_RETENTION_ENABLED:-false}
+      - ECLOUDGEN_FULL_TARGET=${ECLOUDGEN_FULL_TARGET:-true}
+      - USER_STORAGE_QUOTA_MB=${USER_STORAGE_QUOTA_MB:-5120}
+      - GUEST_STORAGE_QUOTA_MB=${GUEST_STORAGE_QUOTA_MB:-500}
+      - JWT_SECRET=${JWT_SECRET}
+      # Only loopback is published; Vite replaces the incoming forwarding header.
+      - FORWARDED_ALLOW_IPS=*
+      - AGENT_PROXY_ALLOWED_URLS=${AGENT_PROXY_ALLOWED_URLS:-}
+      - PUBLIC_BASE_URL=${PUBLIC_BASE_URL:-}
+      - AUTO_CREATE_TABLES=${AUTO_CREATE_TABLES:-1}
+      - KNOWLEDGE_BACKEND=postgres
+      - AGENT_REQUEST_OUTPUT_TOKENS=${AGENT_REQUEST_OUTPUT_TOKENS:-8192}
+      - AGENT_TURN_OUTPUT_TOKENS=${AGENT_TURN_OUTPUT_TOKENS:-32768}
+      - AGENT_TURN_REQUESTS=${AGENT_TURN_REQUESTS:-16}
+      - AGENT_TURN_TOOLS=${AGENT_TURN_TOOLS:-24}
+      - AGENT_TURN_SECONDS=${AGENT_TURN_SECONDS:-240}
+      - AGENT_TURN_LEASE_SECONDS=${AGENT_TURN_LEASE_SECONDS:-300}
+      - AGENT_CONTEXT_TARGET_TOKENS=${AGENT_CONTEXT_TARGET_TOKENS:-98304}
+      - AGENT_CONTEXT_MAX_INPUT_TOKENS=${AGENT_CONTEXT_MAX_INPUT_TOKENS:-131072}
+      - AGENT_CONTEXT_BYTES=${AGENT_CONTEXT_BYTES:-2097152}
+    depends_on:
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    command:
+      - uvicorn
+      - backend.main:app
+      - --host
+      - 0.0.0.0
+      - --port
+      - "18000"
+    ports:
+      - "127.0.0.1:18000:18000"
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:18000/healthz', timeout=3)"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 10s
+    restart: unless-stopped
+
+  backend-worker:
+    logging: *service-logging
+    image: ${IMAGE_REPOSITORY:-genova}:backend-${PLATFORM_VERSION:-1.0.2}
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: genova-backend-worker
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_URL=${REDIS_URL}
+      - REDIS_DISPATCH_QUEUE=genova:queue:dispatch
+      - REDIS_RESULT_QUEUE=genova:queue:result
+      - DATA_ROOT=/app/data
+      - DATA_RETENTION_ENABLED=${DATA_RETENTION_ENABLED:-false}
+      - ECLOUDGEN_FULL_TARGET=${ECLOUDGEN_FULL_TARGET:-true}
+      - USER_STORAGE_QUOTA_MB=${USER_STORAGE_QUOTA_MB:-5120}
+      - GUEST_STORAGE_QUOTA_MB=${GUEST_STORAGE_QUOTA_MB:-500}
+      - JWT_SECRET=${JWT_SECRET}
+      - AUTO_CREATE_TABLES=0
+    depends_on:
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    command:
+      - python
+      - -m
+      - backend.worker
+    restart: unless-stopped
+
+  workflow-worker:
+    logging: *service-logging
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    image: ${IMAGE_REPOSITORY:-genova}:backend-${PLATFORM_VERSION:-1.0.2}
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_URL=${REDIS_URL}
+      - DATA_ROOT=/app/data
+      - DATA_RETENTION_ENABLED=${DATA_RETENTION_ENABLED:-false}
+      - ECLOUDGEN_FULL_TARGET=${ECLOUDGEN_FULL_TARGET:-true}
+      - USER_STORAGE_QUOTA_MB=${USER_STORAGE_QUOTA_MB:-5120}
+      - GUEST_STORAGE_QUOTA_MB=${GUEST_STORAGE_QUOTA_MB:-500}
+      - JWT_SECRET=${JWT_SECRET}
+      - AGENT_PROXY_ALLOWED_URLS=${AGENT_PROXY_ALLOWED_URLS:-}
+      - AUTO_CREATE_TABLES=0
+      - KNOWLEDGE_BACKEND=postgres
+      - AGENT_REQUEST_OUTPUT_TOKENS=${AGENT_REQUEST_OUTPUT_TOKENS:-8192}
+      - AGENT_TURN_OUTPUT_TOKENS=${AGENT_TURN_OUTPUT_TOKENS:-32768}
+      - AGENT_TURN_REQUESTS=${AGENT_TURN_REQUESTS:-16}
+      - AGENT_TURN_TOOLS=${AGENT_TURN_TOOLS:-24}
+      - AGENT_TURN_SECONDS=${AGENT_TURN_SECONDS:-240}
+      - AGENT_TURN_LEASE_SECONDS=${AGENT_TURN_LEASE_SECONDS:-300}
+      - AGENT_CONTEXT_TARGET_TOKENS=${AGENT_CONTEXT_TARGET_TOKENS:-98304}
+      - AGENT_CONTEXT_MAX_INPUT_TOKENS=${AGENT_CONTEXT_MAX_INPUT_TOKENS:-131072}
+      - AGENT_CONTEXT_BYTES=${AGENT_CONTEXT_BYTES:-2097152}
+      - WORKFLOW_POLL_SECONDS=${WORKFLOW_POLL_SECONDS:-1}
+    depends_on:
+      backend-api:
+        condition: service_healthy
+    command: [python, -m, backend.workflow_worker]
+    restart: unless-stopped
+
+  dispatcher:
+    logging: *service-logging
+    image: ${IMAGE_REPOSITORY:-genova}:backend-${PLATFORM_VERSION:-1.0.2}
+    container_name: genova-dispatcher
+    working_dir: /app
+    volumes:
+      - ./:/app
+    depends_on:
+      redis:
+        condition: service_healthy
+    command:
+      - python
+      - -m
+      - genova_runtime.queue_dispatcher
+      - --redis_url
+      - ${REDIS_URL}
+    restart: unless-stopped
+
+  worker-surfgen:
+    logging: *service-logging
+    image: ${IMAGE_REPOSITORY:-genova}:surfgen-${PLATFORM_VERSION:-1.0.2}
+    container_name: genova-worker-surfgen
+    gpus: all
+    environment:
+      - CUDA_VISIBLE_DEVICES=${SURFGEN_CUDA_VISIBLE_DEVICES:-0}
+      - PYTHONPATH=/platform
+      - SURFGEN_ROOT=/app
+      - SURFGEN_MULTIVALUE_BIN=/usr/lib/apbs/tools/bin/bin/multivalue
+    working_dir: /platform
+    volumes:
+      - ./genova_runtime:/platform/genova_runtime:ro
+      - ./data:/app/data
+    depends_on:
+      redis:
+        condition: service_healthy
+    command:
+      - /opt/conda/envs/surfgen/bin/python
+      - -m
+      - genova_runtime.queue_worker
+      - --task
+      - surfgen
+      - --redis_url
+      - ${REDIS_URL}
+    restart: unless-stopped
+
+  worker-ecloudgen:
+    logging: *service-logging
+    image: ${IMAGE_REPOSITORY:-genova}:ecloudgen-${PLATFORM_VERSION:-1.0.2}
+    build:
+      context: ..
+      dockerfile: deploy/ecloudgen.Dockerfile
+      args:
+        ECLOUDGEN_BASE_IMAGE: ${ECLOUDGEN_BASE_IMAGE:-ecloudgen:latest}
+    container_name: genova-worker-ecloudgen
+    gpus: all
+    environment:
+      - CUDA_VISIBLE_DEVICES=${SURFGEN_CUDA_VISIBLE_DEVICES:-0}
+      - GPU_LOCK_PATH=/app/data/.locks/gpu-0.lock
+    volumes:
+      - ./genova_runtime:/platform/genova_runtime:ro
+      - ./data:/app/data
+      - ./builtin_datasets:/app/builtin_datasets:ro
+    depends_on:
+      redis:
+        condition: service_healthy
+    command: ["python", "-m", "genova_runtime.queue_worker", "--task", "ecloudgen", "--redis_url", "${REDIS_URL}"]
+    restart: unless-stopped
+
+  worker-epso:
+    logging: *service-logging
+    image: ${IMAGE_REPOSITORY:-genova}:epso-${PLATFORM_VERSION:-1.0.2}
+    build:
+      context: .
+      dockerfile: ../deploy/epso.Dockerfile
+      additional_contexts:
+        ecloudgen: service:worker-ecloudgen
+        tarpass: service:worker-tarpass
+    container_name: genova-worker-epso
+    gpus: all
+    environment:
+      - CUDA_VISIBLE_DEVICES=${SURFGEN_CUDA_VISIBLE_DEVICES:-0}
+      - GPU_LOCK_PATH=/app/data/.locks/gpu-0.lock
+    volumes:
+      - ./genova_runtime:/platform/genova_runtime:ro
+      - ./tarpass:/app/tarpass:ro
+      - ./data:/app/data
+    depends_on:
+      redis:
+        condition: service_healthy
+    command: ["python", "-m", "genova_runtime.queue_worker", "--task", "epso", "--redis_url", "${REDIS_URL}"]
+    restart: unless-stopped
+
+  worker-tarpass:
+    logging: *service-logging
+    build:
+      context: .
+      dockerfile: tarpass/Dockerfile
+    image: ${IMAGE_REPOSITORY:-genova}:tarpass-${PLATFORM_VERSION:-1.0.2}
+    container_name: genova-worker-tarpass
+    gpus: all
+    environment:
+      - CUDA_VISIBLE_DEVICES=${SURFGEN_CUDA_VISIBLE_DEVICES:-0}
+      - TARPASS_CPUS=${TARPASS_CPUS:-8}
+      - TARPASS_BATCH_SIZE=${TARPASS_BATCH_SIZE:-64}
+      - GPU_LOCK_PATH=/app/data/.locks/gpu-0.lock
+    volumes:
+      - ./data:/app/data
+      - ./genova_runtime:/app/genova_runtime:ro
+      - ./tarpass:/app/tarpass:ro
+    depends_on:
+      redis:
+        condition: service_healthy
+    command: ["python", "-m", "genova_runtime.queue_worker", "--task", "tarpass", "--redis_url", "${REDIS_URL}"]
+    restart: unless-stopped
+
+  worker-protein-preparation:
+    logging: *service-logging
+    build:
+      context: .
+      dockerfile: protein-preparation-worker.Dockerfile
+    image: ${IMAGE_REPOSITORY:-genova}:protein-preparation-${PLATFORM_VERSION:-1.0.2}
+    container_name: genova-worker-protein-preparation
+    working_dir: /platform
+    environment:
+      OPENMM_CPU_THREADS: ${OPENMM_CPU_THREADS:-8}
+    volumes:
+      - ./genova_runtime:/platform/genova_runtime:ro
+      - ./data:/app/data
+      - ./builtin_datasets:/app/builtin_datasets:ro
+    depends_on:
+      redis:
+        condition: service_healthy
+    command:
+      - python
+      - -m
+      - genova_runtime.queue_worker
+      - --task
+      - protein_preparation
+      - --redis_url
+      - ${REDIS_URL}
+    restart: unless-stopped
+
+  worker-delete:
+    logging: *service-logging
+    image: ${DELETE_IMAGE:-${IMAGE_REPOSITORY:-genova}:delete-${PLATFORM_VERSION:-1.0.2}}
+    container_name: genova-worker-delete
+    gpus: all
+    environment:
+      - CUDA_VISIBLE_DEVICES=${DELETE_CUDA_VISIBLE_DEVICES:-0}
+      - PYTHONPATH=/platform:/code:/code/components/Delete
+      - DELETE_CHECKPOINT=/opt/delete/delete.pt
+    working_dir: /platform
+    volumes:
+      - ./genova_runtime:/platform/genova_runtime:ro
+      - ./data:/app/data
+    depends_on:
+      redis:
+        condition: service_healthy
+    command:
+      - python3
+      - -m
+      - genova_runtime.queue_worker
+      - --task
+      - delete
+      - --redis_url
+      - ${REDIS_URL}
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  redisdata:

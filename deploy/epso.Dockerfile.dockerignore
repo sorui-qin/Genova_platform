@@ -1,0 +1,8 @@
+**
+!genova_runtime/
+!genova_runtime/**
+!tarpass/
+!tarpass/**
+**/__pycache__/
+**/*.pyc
+**/test_*.py

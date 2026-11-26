@@ -1,0 +1,6 @@
+BEGIN;
+CREATE TABLE IF NOT EXISTS agent_proxy_settings (
+    user_id UUID PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
+    proxy_url VARCHAR(2048)
+);
+COMMIT;

@@ -1,0 +1,7 @@
+**
+!delete-runtime-patch.py
+!genova_runtime/
+!genova_runtime/**
+**/__pycache__/
+**/*.pyc
+**/test_*.py

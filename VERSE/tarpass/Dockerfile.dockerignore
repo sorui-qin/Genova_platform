@@ -1,0 +1,12 @@
+**
+!tarpass/
+!tarpass/**
+!genova_runtime/
+!genova_runtime/**
+!builtin_datasets/
+!builtin_datasets/**
+**/__pycache__/
+**/*.pyc
+
+**/tests/
+**/test_*.py

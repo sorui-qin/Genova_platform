@@ -1,0 +1,4256 @@
+{
+  "version": "2026-11-03.1",
+  "updated_at": "2026-11-03",
+  "references": {
+    "surfgen": {
+      "title": "Learning on topological surface and geometric structure for 3D molecular generation",
+      "citation": "Zhang et al. Nature Computational Science (2023).",
+      "url": "https://doi.org/10.1038/s43588-023-00530-2"
+    },
+    "ecloudgen": {
+      "title": "ECloudGen: leveraging electron clouds as a latent variable to scale up structure-based molecular design",
+      "citation": "Zhang et al. Nature Computational Science 5, 1017–1028 (2025).",
+      "url": "https://doi.org/10.1038/s43588-025-00886-7"
+    },
+    "delete": {
+      "title": "Deep lead optimization enveloped in protein pocket and its application in designing potent and selective ligands targeting LTK protein",
+      "citation": "Zhang et al. Nature Machine Intelligence (2025).",
+      "url": "https://doi.org/10.1038/s42256-025-00997-w"
+    },
+    "epso-code": {
+      "title": "ECloudGen official implementation and EPSO examples",
+      "citation": "Official repository; play_around/BRD4_EPSO.ipynb and models/ECloudDecipher/optimize.",
+      "url": "https://github.com/OdinZhang/ECloudGen_official"
+    },
+    "qed": {
+      "title": "Quantifying the chemical beauty of drugs",
+      "citation": "Bickerton et al. Nature Chemistry 4, 90–98 (2012).",
+      "url": "https://doi.org/10.1038/nchem.1243"
+    },
+    "sa": {
+      "title": "Estimation of synthetic accessibility score of drug-like molecules based on molecular complexity and fragment contributions",
+      "citation": "Ertl & Schuffenhauer. Journal of Cheminformatics 1, 8 (2009).",
+      "url": "https://doi.org/10.1186/1758-2946-1-8"
+    },
+    "lipinski": {
+      "title": "Experimental and computational approaches to estimate solubility and permeability in drug discovery and development settings",
+      "citation": "Lipinski et al. Advanced Drug Delivery Reviews 23, 3–25 (1997).",
+      "url": "https://doi.org/10.1016/S0169-409X(96)00423-1"
+    },
+    "veber": {
+      "title": "Molecular properties that influence the oral bioavailability of drug candidates",
+      "citation": "Veber et al. Journal of Medicinal Chemistry 45, 2615–2623 (2002).",
+      "url": "https://doi.org/10.1021/jm020017n"
+    },
+    "pains": {
+      "title": "New substructure filters for removal of pan assay interference compounds (PAINS) from screening libraries and for their exclusion in bioassays",
+      "citation": "Baell & Holloway. Journal of Medicinal Chemistry 53, 2719–2740 (2010).",
+      "url": "https://doi.org/10.1021/jm901137j"
+    },
+    "filters": {
+      "title": "RDKit FilterCatalog: PAINS, ChEMBL SureChEMBL and Glaxo catalogs",
+      "citation": "RDKit official API; catalogs identify structural alerts, not measured toxicity.",
+      "url": "https://www.rdkit.org/docs/source/rdkit.Chem.rdfiltercatalog.html"
+    },
+    "rdkit": {
+      "title": "RDKit molecular descriptors",
+      "citation": "RDKit official API; the platform implementation specifies the exact descriptor used.",
+      "url": "https://www.rdkit.org/docs/source/rdkit.Chem.rdMolDescriptors.html"
+    },
+    "crippen": {
+      "title": "Atom-based calculation of partition coefficient and molar refractivity",
+      "citation": "Wildman & Crippen. Journal of Chemical Information and Computer Sciences 39, 868–873 (1999).",
+      "url": "https://doi.org/10.1021/ci990307l"
+    },
+    "fspy": {
+      "title": "Escape from flatland: increasing saturation as an approach to improving clinical success",
+      "citation": "Lovering, Bikker & Humblet. Journal of Medicinal Chemistry 52, 6752–6756 (2009).",
+      "url": "https://doi.org/10.1021/jm901241e"
+    },
+    "sps": {
+      "title": "Spacial Score—A Comprehensive Topological Indicator for Small-Molecule Complexity",
+      "citation": "Krzyzanowski et al. Journal of Medicinal Chemistry (2023); RDKit defaults to normalized nSPS.",
+      "url": "https://doi.org/10.1021/acs.jmedchem.3c00689"
+    },
+    "bertz": {
+      "title": "The first general index of molecular complexity",
+      "citation": "Bertz. Journal of the American Chemical Society 103, 3599–3601 (1981).",
+      "url": "https://doi.org/10.1021/ja00402a071"
+    },
+    "morgan": {
+      "title": "Extended-connectivity fingerprints",
+      "citation": "Rogers & Hahn. Journal of Chemical Information and Modeling 50, 742–754 (2010).",
+      "url": "https://doi.org/10.1021/ci100050t"
+    },
+    "murcko": {
+      "title": "The properties of known drugs. 1. Molecular frameworks",
+      "citation": "Bemis & Murcko. Journal of Medicinal Chemistry 39, 2887–2893 (1996).",
+      "url": "https://doi.org/10.1021/jm9602928"
+    },
+    "gnina": {
+      "title": "GNINA 1.3: the next increment in molecular docking with deep learning",
+      "citation": "McNutt et al. Journal of Cheminformatics 17, 28 (2025).",
+      "url": "https://doi.org/10.1186/s13321-025-00973-x"
+    },
+    "posebusters": {
+      "title": "PoseBusters: AI-based docking methods fail to generate physically valid poses or generalise to novel sequences",
+      "citation": "Buttenschoen, Morris & Deane. Chemical Science 15, 3130–3139 (2024).",
+      "url": "https://doi.org/10.1039/D3SC04185A"
+    },
+    "sucos": {
+      "title": "SuCOS is better than RMSD for evaluating fragment elaboration and docking poses",
+      "citation": "Leung et al. ChemRxiv (2019), preprint.",
+      "url": "https://doi.org/10.26434/chemrxiv.8100203.v1"
+    },
+    "shape": {
+      "title": "RDKit shape comparison",
+      "citation": "RDKit official API, ShapeTanimotoDist and ShapeProtrudeDist.",
+      "url": "https://www.rdkit.org/docs/source/rdkit.Chem.rdShapeHelpers.html"
+    },
+    "esp": {
+      "title": "espsim: electrostatic potential similarity",
+      "citation": "Heid et al. Official implementation; Gaussian overlap integrals and similarity normalization.",
+      "url": "https://github.com/hesther/espsim"
+    },
+    "plip": {
+      "title": "PLIP: fully automated protein–ligand interaction profiler",
+      "citation": "Salentin et al. Nucleic Acids Research 43, W443–W447 (2015).",
+      "url": "https://doi.org/10.1093/nar/gkv315"
+    },
+    "butina": {
+      "title": "Unsupervised data base clustering based on Daylight’s fingerprint and Tanimoto similarity",
+      "citation": "Butina. Journal of Chemical Information and Computer Sciences 39, 747–750 (1999).",
+      "url": "https://doi.org/10.1021/ci9803381"
+    },
+    "volume": {
+      "title": "RDKit conformer volume calculation",
+      "citation": "RDKit official API: AllChem.ComputeMolVolume, using a grid representation of molecular shape.",
+      "url": "https://www.rdkit.org/docs/source/rdkit.Chem.AllChem.html#rdkit.Chem.AllChem.ComputeMolVolume"
+    }
+  },
+  "entries": [
+    {
+      "id": "surfgen",
+      "group": "models",
+      "model": "surfgen",
+      "keys": [],
+      "aliases": [
+        "surface generation",
+        "表面生成"
+      ],
+      "unit": "",
+      "source": "genova_runtime/entry_surfgen.py",
+      "references": [
+        "surfgen"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "SurfGen",
+          "summary": "SurfGen builds new molecules with 3D coordinates, guided by the shape and interactions of a protein pocket surface.",
+          "details": "Two graph neural networks capture complementary information: Geodesic-GNN learns topology between surface nodes, while Geoatom-GNN learns spatial relationships between ligand atoms and the surface. Equivariant predictions rotate with the input, capturing relative geometry.\n\nGeneration proceeds by selecting a frontier atom, predicting the new atom’s 3D position, element and bonds, and extending candidate branches. This connects the surface environment to atom-by-atom growth for pocket-guided de novo design.\n\nA prepared Protein Context and reference ligand define the pocket surface. Outputs include SMILES CSV and directly generated 3D SDF.",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "SurfGen",
+          "summary": "SurfGen 根据蛋白口袋表面的形状和相互作用，逐步生成具有三维坐标的新分子。",
+          "details": "模型采用两个图神经网络：Geodesic-GNN 学习口袋表面节点之间的拓扑联系，Geoatom-GNN 学习配体原子与表面的空间关系。等变设计使预测坐标随输入的整体旋转相应变化，从而学习相对几何。\n\n生成时，网络依次选择可生长的前沿原子，预测新原子的三维位置、元素类别和化学键，再继续扩展候选分支。模型将表面环境与原子生长联系起来，适合由口袋形状引导的从头设计。\n\n使用已准备的 Protein Context 和参考配体构建口袋表面，结果包含 SMILES CSV 和模型直接生成的三维 SDF。",
+          "guidance": "",
+          "range": ""
+        }
+      },
+      "related": [
+        "molecule-generation"
+      ]
+    },
+    {
+      "id": "ecloudgen",
+      "group": "models",
+      "model": "ecloudgen",
+      "keys": [],
+      "aliases": [
+        "electron cloud",
+        "电子云"
+      ],
+      "unit": "",
+      "source": "genova_runtime/entry_ecloudgen.py",
+      "references": [
+        "ecloudgen",
+        "epso-code"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "ECloudGen",
+          "summary": "ECloudGen uses electron clouds to connect 3D pocket environments with molecular chemical structure.",
+          "details": "It has two stages: ECloudDiff uses 3D convolutional encoders and pocket-conditioned latent diffusion to generate ligand electron clouds; ECloudDecipher converts those clouds into SMILES. Diffusion uses a 3D U-Net, while an autoregressive Transformer predicts SMILES tokens sequentially.\n\nContrastive learning aligns electron-cloud and SMILES representations of the same molecule, with an equivariant point encoder providing atomic spatial information. This links spatial distributions in a pocket to chemical-structure learning.\n\nUse a prepared Protein Context, with an optional reference ligand. Without one, generation uses the saved site center. After each round, the saved seed selects the target count from valid unique candidates. Output is SMILES CSV; TarPass prepares 3D conformers and performs docking.",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "ECloudGen",
+          "summary": "ECloudGen 以电子云作为三维口袋环境与分子化学结构之间的中间表示。",
+          "details": "模型分为两个阶段：ECloudDiff 用三维卷积编码器和条件潜空间扩散模型，在蛋白口袋条件下生成配体电子云；ECloudDecipher 再把电子云转成 SMILES。扩散网络采用三维 U-Net，化学解码器采用自回归 Transformer，逐个预测 SMILES token。\n\n训练结合电子云与 SMILES 的对比学习，使同一分子的两种表示相互对应；等变点编码器补充原子空间信息。这种分工让口袋中的空间分布和大规模化学结构学习相连接。\n\n使用已准备的 Protein Context，参考配体可选；未选择配体时使用保存的位点中心。每轮完成后，按保存的 seed 从有效唯一候选池抽取目标数量，输出 SMILES CSV；三维构象和对接由 TarPass 完成。",
+          "guidance": "",
+          "range": ""
+        }
+      },
+      "related": [
+        "molecule-generation"
+      ]
+    },
+    {
+      "id": "delete",
+      "group": "models",
+      "model": "delete",
+      "keys": [],
+      "aliases": [
+        "lead optimization",
+        "片段优化"
+      ],
+      "unit": "",
+      "source": "genova_runtime/entry_delete.py",
+      "references": [
+        "delete"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "DELETE",
+          "summary": "DELETE keeps selected lead fragments in a protein pocket and redesigns the parts you choose to edit.",
+          "details": "The paper unifies growing, linking, scaffold replacement and side-chain decoration as masking part of a structure and reconstructing it. Training uses different masks so one structure-aware equivariant network learns to complete molecules from retained fragments and the pocket environment.\n\nThe network encodes pocket–ligand geometry and predicts the frontier, new atom positions, elements and bonds, directly producing a pose inside the pocket. Retained atoms and attachment points guide growth, supporting local edits that preserve a lead core.\n\nSelect a prepared Protein Context and ligand, then confirm the edit region and attachment points. Outputs include SMILES CSV and generated 3D SDF.",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "DELETE",
+          "summary": "DELETE 在蛋白口袋中保留指定先导片段，并重新设计需要修改的部分。",
+          "details": "论文将片段生长、连接、骨架替换和侧链修饰统一为“遮住一部分结构，再恢复”的任务。训练时采用不同遮罩，让同一个结构感知等变网络学习如何依据保留片段和口袋环境补全分子。\n\n网络编码口袋与配体的三维关系，依次预测生长前沿、新原子位置、元素和成键方式，直接得到口袋内的三维构象。保留原子和连接点约束生成方向，适合需要维持先导核心、调整局部结构的设计。\n\n选择已准备的 Protein Context 和配体，在编辑器中确认修改区域与连接点，结果包含 SMILES CSV 和生成的三维 SDF。",
+          "guidance": "",
+          "range": ""
+        }
+      },
+      "related": [
+        "lead-optimization"
+      ]
+    },
+    {
+      "id": "epso",
+      "group": "models",
+      "model": "epso",
+      "keys": [],
+      "aliases": [
+        "particle swarm",
+        "粒子群优化"
+      ],
+      "unit": "",
+      "source": "genova_runtime/entry_epso.py",
+      "references": [
+        "ecloudgen",
+        "epso-code"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "ECloud EPSO",
+          "summary": "ECloud EPSO starts from a complete seed molecule and optimizes properties in ECloudDecipher’s continuous chemical embedding space.",
+          "details": "It reuses ECloudGen’s molecular encoder and SMILES decoder with the official particle-swarm workflow. The seed is encoded as a vector and particles explore nearby positions. Each iteration updates their positions using personal and swarm-best information, decodes molecules, and scores the selected property objectives.\n\nFitness is a weighted average of objective desirability and guides which candidates the search favors. Objectives can combine QED, synthetic accessibility, molecular weight, similarity to the seed, and Gnina docking energy.\n\nOutputs are candidate CSV, trajectory and metadata. The Gnina objective uses the validated receptor and docking box from the Protein Context. TarPass prepares fresh conformers for postprocessing and pose export.",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "ECloud EPSO",
+          "summary": "ECloud EPSO 以完整分子为种子，在 ECloudDecipher 的连续化学表示空间中进行粒子群性质优化。",
+          "details": "它复用 ECloudGen 的分子编码器与 SMILES 解码器，并采用官方粒子群优化流程。起始分子先被编码成向量，多个粒子在其附近探索；每轮根据自身历史最优和群体优选位置更新，解码为分子，再按用户选择的性质目标评分。\n\nfitness 是各目标满意度的加权平均，决定搜索优先靠近哪些候选。优化可以同时考虑 QED、可合成性、分子量、与起始配体的相似度和 Gnina 对接能量。\n\n输出包含候选 CSV、优化轨迹和元数据。启用 Gnina 目标时，EPSO 使用 Protein Context 中已校验的受体和对接框。导出对接姿态时，TarPass 会重新生成构象并对接。",
+          "guidance": "",
+          "range": ""
+        }
+      },
+      "related": [
+        "lead-optimization"
+      ]
+    },
+    {
+      "id": "inputs",
+      "group": "guides",
+      "model": "common",
+      "keys": [
+        "protein_context_id",
+        "ligand_dataset_id"
+      ],
+      "aliases": [
+        "参考配体",
+        "输入文件",
+        "reference ligand",
+        "Protein Context"
+      ],
+      "unit": "",
+      "source": "genova_frontend/src/components/protein-preparation/TwoStagePreparation.vue; backend/services/protein_contexts.py",
+      "references": [
+        "surfgen",
+        "ecloudgen",
+        "delete"
+      ],
+      "translations": {
+        "zh-CN": {
+          "title": "输入准备",
+          "summary": "准备蛋白结构、蛋白环境和各模型使用的参考配体。",
+          "details": "",
+          "guidance": "",
+          "range": "",
+          "action": "打开蛋白准备",
+          "sections": [
+            {
+              "title": "输入要求",
+              "items": [
+                "蛋白：PDB、CIF 或 mmCIF。",
+                "参考配体：结构内配体，或与蛋白处于同一坐标系的 SDF、MOL、MOL2 文件。",
+                "EPSO 外部起始分子：包含一个分子的单文件 SDF。"
+              ],
+              "ordered": false
+            },
+            {
+              "title": "操作步骤",
+              "items": [
+                "进入“蛋白准备”，点击上传按钮或“数据资源”选择蛋白；数据集中有多个结构文件时，先选择具体文件。",
+                "点击“开始准备”，完成后点击“下一步：选择位点”。",
+                "用配体、残基或坐标指定位置，设置盒子，并按模型需要绑定参考配体。",
+                "点击“保存 Context”，查看兼容性结果，在生成或优化模块选择该蛋白环境。"
+              ],
+              "ordered": true
+            },
+            {
+              "title": "结果与下一步",
+              "items": [
+                "ECloudGen 使用蛋白口袋，参考配体可选；DELETE 使用蛋白环境中的参考配体。",
+                "EPSO 默认使用蛋白环境中的配体，也可在先导优化页面上传或选择起始分子 SDF。"
+              ],
+              "ordered": false
+            },
+            {
+              "title": "处理方法",
+              "items": [
+                "模型输入验证失败：在 Context 的兼容性列表查看详情，修正输入后点击对应模型的“重试”。"
+              ],
+              "ordered": false
+            }
+          ]
+        },
+        "en-US": {
+          "title": "Preparing inputs",
+          "summary": "Prepare the protein, Protein Context and reference ligand used by each model.",
+          "details": "",
+          "guidance": "",
+          "range": "",
+          "action": "Open Protein Preparation",
+          "sections": [
+            {
+              "title": "Inputs",
+              "items": [
+                "Protein: PDB, CIF or mmCIF.",
+                "Reference ligand: an embedded ligand, or an SDF, MOL or MOL2 in the protein coordinate frame.",
+                "External EPSO seed: one SDF file containing one molecule."
+              ],
+              "ordered": false
+            },
+            {
+              "title": "Steps",
+              "items": [
+                "Open Protein Preparation. Upload a protein or select it from Data Resources. Choose a file when a dataset contains several structures.",
+                "Click Start preparation. When complete, click Next: select a site.",
+                "Define the position with a ligand, residues or coordinates. Set the box and bind the reference ligand required by the model.",
+                "Click Save context, check model compatibility, then select this Context in generation or optimization."
+              ],
+              "ordered": true
+            },
+            {
+              "title": "Results and next steps",
+              "items": [
+                "ECloudGen uses the protein pocket with an optional reference ligand. DELETE uses the Context reference ligand.",
+                "EPSO uses the Context ligand by default; upload or select a seed SDF in Lead Optimization to replace it."
+              ],
+              "ordered": false
+            },
+            {
+              "title": "Solutions",
+              "items": [
+                "If model input validation fails, inspect its compatibility details, correct the inputs and click Retry for that model."
+              ],
+              "ordered": false
+            }
+          ]
+        }
+      },
+      "guide_section": "basics",
+      "route": "/protein-preparation",
+      "related": [
+        "protein-preparation",
+        "molecule-generation",
+        "lead-optimization",
+        "datasets-workflow"
+      ]
+    },
+    {
+      "id": "surfgen-count",
+      "group": "parameters",
+      "model": "surfgen",
+      "keys": [
+        "num_molecules"
+      ],
+      "aliases": [
+        "surfgen count",
+        "surfgen 生成数量"
+      ],
+      "unit": "",
+      "source": "pages/molgen/index.vue; pages/molopt/index.vue; backend/services/jobs.py",
+      "references": [
+        "surfgen"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Number of molecules",
+          "summary": "Maximum requested molecule count; larger values provide more candidates for screening and usually require more compute.",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "生成数量",
+          "summary": "希望返回的分子数量上限；增大可获得更多候选供筛选，通常也增加计算时间。",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        }
+      },
+      "default": 100
+    },
+    {
+      "id": "surfgen-seed",
+      "group": "parameters",
+      "model": "surfgen",
+      "keys": [
+        "seed"
+      ],
+      "aliases": [
+        "surfgen seed"
+      ],
+      "unit": "",
+      "source": "genova_runtime/generation_settings.py",
+      "references": [
+        "surfgen"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Random seed",
+          "summary": "Controls random choices during generation and selection; changing it can produce different structures, so keep it unchanged for controlled comparisons.",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "随机种子",
+          "summary": "控制生成与抽样中的随机选择，改变后可能得到不同结构；对照比较时保持一致。",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        }
+      },
+      "default_key": "seed"
+    },
+    {
+      "id": "delete-count",
+      "group": "parameters",
+      "model": "delete",
+      "keys": [
+        "num_molecules"
+      ],
+      "aliases": [
+        "delete count",
+        "delete 生成数量"
+      ],
+      "unit": "",
+      "source": "pages/molgen/index.vue; pages/molopt/index.vue; backend/services/jobs.py",
+      "references": [
+        "delete"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Number of molecules",
+          "summary": "Maximum requested molecule count; larger values provide more candidates for screening and usually require more compute.",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "生成数量",
+          "summary": "希望返回的分子数量上限；增大可获得更多候选供筛选，通常也增加计算时间。",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        }
+      },
+      "default": 100
+    },
+    {
+      "id": "delete-seed",
+      "group": "parameters",
+      "model": "delete",
+      "keys": [
+        "seed"
+      ],
+      "aliases": [
+        "delete seed"
+      ],
+      "unit": "",
+      "source": "genova_runtime/generation_settings.py",
+      "references": [
+        "delete"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Random seed",
+          "summary": "Controls random choices during generation and selection; changing it can produce different structures, so keep it unchanged for controlled comparisons.",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "随机种子",
+          "summary": "控制生成与抽样中的随机选择，改变后可能得到不同结构；对照比较时保持一致。",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        }
+      },
+      "default_key": "seed"
+    },
+    {
+      "id": "ecloudgen-count",
+      "group": "parameters",
+      "model": "ecloudgen",
+      "keys": [
+        "target_num_molecules"
+      ],
+      "aliases": [
+        "ecloudgen count",
+        "ecloudgen 生成数量"
+      ],
+      "unit": "",
+      "source": "pages/molgen/index.vue; pages/molopt/index.vue; backend/services/jobs.py",
+      "references": [
+        "ecloudgen"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Number of molecules",
+          "summary": "Requested count of valid, unique molecules; larger targets usually require more sampling and decoding and take longer.",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "生成数量",
+          "summary": "希望返回的有效唯一分子数量；目标越大，需要的采样和解码通常越多，生成时间也越长。",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        }
+      },
+      "default": 100
+    },
+    {
+      "id": "ecloudgen-seed",
+      "group": "parameters",
+      "model": "ecloudgen",
+      "keys": [
+        "seed"
+      ],
+      "aliases": [
+        "ecloudgen seed"
+      ],
+      "unit": "",
+      "source": "genova_runtime/generation_settings.py",
+      "references": [
+        "ecloudgen"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Random seed",
+          "summary": "Controls random choices during generation and selection; changing it can produce different structures, so keep it unchanged for controlled comparisons.",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "随机种子",
+          "summary": "控制生成与抽样中的随机选择，改变后可能得到不同结构；对照比较时保持一致。",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        }
+      },
+      "default_key": "seed"
+    },
+    {
+      "id": "epso-count",
+      "group": "parameters",
+      "model": "epso",
+      "keys": [
+        "num_molecules"
+      ],
+      "aliases": [
+        "epso count",
+        "epso 生成数量"
+      ],
+      "unit": "",
+      "source": "pages/molgen/index.vue; pages/molopt/index.vue; backend/services/jobs.py",
+      "references": [
+        "ecloudgen"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Number of molecules",
+          "summary": "Maximum requested molecule count; larger values provide more candidates for screening and usually require more compute.",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "生成数量",
+          "summary": "希望返回的分子数量上限；增大可获得更多候选供筛选，通常也增加计算时间。",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        }
+      },
+      "default": 100
+    },
+    {
+      "id": "epso-seed",
+      "group": "parameters",
+      "model": "epso",
+      "keys": [
+        "seed"
+      ],
+      "aliases": [
+        "epso seed"
+      ],
+      "unit": "",
+      "source": "genova_runtime/epso_objectives.py",
+      "references": [
+        "ecloudgen"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Random seed",
+          "summary": "Controls random choices in particle initialization and decoding; changing it can produce different search trajectories and candidate structures.",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "随机种子",
+          "summary": "控制粒子初始化与解码中的随机选择，改变后可能得到不同的搜索轨迹和候选结构。",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        }
+      },
+      "default_key": "seed"
+    },
+    {
+      "id": "surfgen-beam_size",
+      "group": "parameters",
+      "model": "surfgen",
+      "keys": [
+        "beam_size"
+      ],
+      "aliases": [
+        "surfgen beam_size"
+      ],
+      "unit": "",
+      "source": "genova_runtime/generation_settings.py",
+      "references": [
+        "surfgen"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Beam size",
+          "summary": "Number of candidate branches retained per step; larger values explore more growth directions and use more GPU memory and time.",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "Beam 候选宽度",
+          "summary": "每步保留的候选分支数；增大可探索更多生长方向，也会增加显存占用和生成时间。",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        }
+      },
+      "default_key": "beam_size"
+    },
+    {
+      "id": "surfgen-max_steps",
+      "group": "parameters",
+      "model": "surfgen",
+      "keys": [
+        "max_steps"
+      ],
+      "aliases": [
+        "surfgen max_steps"
+      ],
+      "unit": "",
+      "source": "genova_runtime/generation_settings.py",
+      "references": [
+        "surfgen"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Maximum growth steps",
+          "summary": "Maximum steps in one molecular growth trajectory; larger values allow longer growth and increase runtime.",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "最大生长步数",
+          "summary": "单次分子生长的最大步数；增大可允许更长的生长过程，也会增加耗时。",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        }
+      },
+      "default_key": "max_steps"
+    },
+    {
+      "id": "surfgen-element_threshold",
+      "group": "parameters",
+      "model": "surfgen",
+      "keys": [
+        "element_threshold"
+      ],
+      "aliases": [
+        "surfgen element_threshold"
+      ],
+      "unit": "",
+      "source": "genova_runtime/generation_settings.py",
+      "references": [
+        "surfgen"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Element probability threshold",
+          "summary": "Probability threshold for candidate elements; higher thresholds accept fewer candidates and affect yield and structural diversity.",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "元素概率阈值",
+          "summary": "候选元素的概率门槛；门槛越高，接受的元素候选越少，会影响产量和结构多样性。",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        }
+      },
+      "default_key": "element_threshold"
+    },
+    {
+      "id": "surfgen-bond_threshold",
+      "group": "parameters",
+      "model": "surfgen",
+      "keys": [
+        "bond_threshold"
+      ],
+      "aliases": [
+        "surfgen bond_threshold"
+      ],
+      "unit": "",
+      "source": "genova_runtime/generation_settings.py",
+      "references": [
+        "surfgen"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Bond probability threshold",
+          "summary": "Probability threshold for candidate bonds; higher thresholds accept fewer bond proposals and change which branches can keep growing.",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "成键概率阈值",
+          "summary": "候选化学键的概率门槛；门槛越高，接受的成键方案越少，会改变可继续生长的分支。",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        }
+      },
+      "default_key": "bond_threshold"
+    },
+    {
+      "id": "delete-beam_size",
+      "group": "parameters",
+      "model": "delete",
+      "keys": [
+        "beam_size"
+      ],
+      "aliases": [
+        "delete beam_size"
+      ],
+      "unit": "",
+      "source": "genova_runtime/generation_settings.py",
+      "references": [
+        "delete"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Beam size",
+          "summary": "Number of candidate branches retained per step; larger values explore more growth directions and use more GPU memory and time.",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "Beam 候选宽度",
+          "summary": "每步保留的候选分支数；增大可探索更多生长方向，也会增加显存占用和生成时间。",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        }
+      },
+      "default_key": "beam_size"
+    },
+    {
+      "id": "delete-max_steps",
+      "group": "parameters",
+      "model": "delete",
+      "keys": [
+        "max_steps"
+      ],
+      "aliases": [
+        "delete max_steps"
+      ],
+      "unit": "",
+      "source": "genova_runtime/generation_settings.py",
+      "references": [
+        "delete"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Maximum growth steps",
+          "summary": "Maximum steps in one molecular growth trajectory; larger values allow longer growth and increase runtime.",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "最大生长步数",
+          "summary": "单次分子生长的最大步数；增大可允许更长的生长过程，也会增加耗时。",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        }
+      },
+      "default_key": "max_steps"
+    },
+    {
+      "id": "delete-element_threshold",
+      "group": "parameters",
+      "model": "delete",
+      "keys": [
+        "element_threshold"
+      ],
+      "aliases": [
+        "delete element_threshold"
+      ],
+      "unit": "",
+      "source": "genova_runtime/generation_settings.py",
+      "references": [
+        "delete"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Element probability threshold",
+          "summary": "Probability threshold for candidate elements; higher thresholds accept fewer candidates and affect yield and structural diversity.",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "元素概率阈值",
+          "summary": "候选元素的概率门槛；门槛越高，接受的元素候选越少，会影响产量和结构多样性。",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        }
+      },
+      "default_key": "element_threshold"
+    },
+    {
+      "id": "delete-bond_threshold",
+      "group": "parameters",
+      "model": "delete",
+      "keys": [
+        "bond_threshold"
+      ],
+      "aliases": [
+        "delete bond_threshold"
+      ],
+      "unit": "",
+      "source": "genova_runtime/generation_settings.py",
+      "references": [
+        "delete"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Bond probability threshold",
+          "summary": "Probability threshold for candidate bonds; higher thresholds accept fewer bond proposals and change which branches can keep growing.",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "成键概率阈值",
+          "summary": "候选化学键的概率门槛；门槛越高，接受的成键方案越少，会改变可继续生长的分支。",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        }
+      },
+      "default_key": "bond_threshold"
+    },
+    {
+      "id": "ecloudgen-noise",
+      "group": "parameters",
+      "model": "ecloudgen",
+      "keys": [
+        "noise"
+      ],
+      "aliases": [
+        "noise",
+        "noise"
+      ],
+      "unit": "",
+      "source": "genova_runtime/generation_settings.py",
+      "references": [
+        "ecloudgen"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Decoder noise",
+          "summary": "Random noise added to the internal representation before decoding; larger noise can increase structural variation and may reduce the fraction of valid molecules.",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "解码噪声",
+          "summary": "解码前加入内部表示的随机噪声；较大噪声可增加结构变化，也可能降低有效分子比例。",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        }
+      },
+      "default_key": "noise"
+    },
+    {
+      "id": "ecloudgen-inv_temp",
+      "group": "parameters",
+      "model": "ecloudgen",
+      "keys": [
+        "inv_temp"
+      ],
+      "aliases": [
+        "inv_temp",
+        "inv_temp"
+      ],
+      "unit": "",
+      "source": "genova_runtime/generation_settings.py",
+      "references": [
+        "ecloudgen"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Inverse temperature",
+          "summary": "Controls how concentrated decoding samples are; higher values favor high-probability structures, while lower values allow more variation and may produce more invalid or low-probability results.",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "逆温度",
+          "summary": "控制解码采样的集中程度；越高越偏向高概率结构，较低值可增加采样变化，也可能增加无效或低概率结果。",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        }
+      },
+      "default_key": "inv_temp"
+    },
+    {
+      "id": "ecloudgen-num_clouds",
+      "group": "parameters",
+      "model": "ecloudgen",
+      "keys": [
+        "num_clouds"
+      ],
+      "aliases": [
+        "num_clouds",
+        "电子云数量"
+      ],
+      "unit": "",
+      "source": "genova_runtime/generation_settings.py",
+      "references": [
+        "ecloudgen"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Number of electron clouds",
+          "summary": "Number of electron clouds in the first round; more clouds broaden exploration and increase diffusion and decoding time.",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "电子云数量",
+          "summary": "首轮电子云数量；增加可探索更多电子云，但扩散和后续解码时间也会增加。",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        }
+      },
+      "default_key": "num_clouds"
+    },
+    {
+      "id": "ecloudgen-decodes_per_cloud",
+      "group": "parameters",
+      "model": "ecloudgen",
+      "keys": [
+        "decodes_per_cloud"
+      ],
+      "aliases": [
+        "decodes_per_cloud",
+        "decodes_per_cloud"
+      ],
+      "unit": "",
+      "source": "genova_runtime/generation_settings.py",
+      "references": [
+        "ecloudgen"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Decodes per cloud",
+          "summary": "Maximum decoding attempts per cloud; more attempts produce more candidates and take longer, with smaller yield gains when many structures repeat.",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "每朵电子云的解码次数",
+          "summary": "每朵电子云的最大解码次数；增加可得到更多候选，也增加耗时，重复结构较多时产量提升会减小。",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        }
+      },
+      "default_key": "decodes_per_cloud"
+    },
+    {
+      "id": "ecloudgen-budget_multiplier",
+      "group": "parameters",
+      "model": "ecloudgen",
+      "keys": [
+        "budget_multiplier"
+      ],
+      "aliases": [
+        "budget_multiplier",
+        "budget_multiplier"
+      ],
+      "unit": "",
+      "source": "genova_runtime/generation_settings.py",
+      "references": [
+        "ecloudgen"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Extra-sampling budget",
+          "summary": "Maximum budget multiplier for extra sampling; a larger budget gives more opportunities to reach the target count and lets shortfall runs continue longer.",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "补采样预算",
+          "summary": "补采样允许的最大预算倍数；更大的预算可增加凑足目标数量的机会，但会延长未达标任务的计算时间。",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        }
+      },
+      "default_key": "budget_multiplier"
+    },
+    {
+      "id": "epso-num_particles",
+      "group": "parameters",
+      "model": "epso",
+      "keys": [
+        "num_particles"
+      ],
+      "aliases": [],
+      "unit": "",
+      "source": "genova_runtime/epso_objectives.py",
+      "references": [
+        "epso-code"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Particles",
+          "summary": "Number of candidate positions explored per step; more particles broaden the search and increase decoding and scoring time per step.",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "粒子数量",
+          "summary": "每步同时探索的候选位置数量；更多粒子扩大搜索范围，也会增加每步的解码和评分时间。",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        }
+      },
+      "default_key": "num_particles"
+    },
+    {
+      "id": "epso-num_steps",
+      "group": "parameters",
+      "model": "epso",
+      "keys": [
+        "num_steps"
+      ],
+      "aliases": [],
+      "unit": "",
+      "source": "genova_runtime/epso_objectives.py",
+      "references": [
+        "epso-code"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Optimization steps",
+          "summary": "Number of particle-swarm updates; more steps allow more optimization and take longer, while the trajectory shows whether objective scores are still improving.",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "优化步数",
+          "summary": "粒子群更新次数；更多步数增加优化机会和总耗时，可结合轨迹判断目标评分是否继续提升。",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        }
+      },
+      "default_key": "num_steps"
+    },
+    {
+      "id": "epso-objectives",
+      "group": "parameters",
+      "model": "epso",
+      "keys": [
+        "objectives",
+        "metric"
+      ],
+      "aliases": [
+        "EPSO SA",
+        "归一化SA",
+        "优化目标",
+        "fitness"
+      ],
+      "unit": "",
+      "source": "genova_runtime/epso_objectives.py",
+      "references": [
+        "epso-code",
+        "qed",
+        "sa"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Optimization objectives",
+          "summary": "Selects properties to improve, with fitness calculated as weighted objective desirability; changing objectives changes which structures the search favors. EPSO SA is 0–1 with higher meaning easier synthesis, and lipinski counts five satisfied rules. The Gnina objective favors lower docking energy relative to the seed.",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "优化目标",
+          "summary": "选择要改善的性质，fitness 为各目标满意度的加权平均；更改目标会改变优先搜索的结构。EPSO 的 SA 为 0–1 且越高越易合成，lipinski 为五项规则满足数。Gnina 目标优先搜索对接能量比起始配体更低的分子。",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        }
+      },
+      "default_key": "objectives"
+    },
+    {
+      "id": "epso-modes",
+      "group": "parameters",
+      "model": "epso",
+      "keys": [
+        "mode",
+        "lower",
+        "upper",
+        "target",
+        "softness",
+        "weight"
+      ],
+      "aliases": [
+        "目标模式",
+        "目标权重",
+        "softness"
+      ],
+      "unit": "",
+      "source": "genova_runtime/epso_objectives.py",
+      "references": [
+        "epso-code"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Target modes and weights",
+          "summary": "Objective weights default to 1; a floor, ceiling, interval or target value defines favorable property values, larger weights have more influence on fitness, and smaller softness emphasizes changes near the threshold.",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "目标模式与权重",
+          "summary": "默认各目标权重为 1；下限、上限、区间或目标值决定哪些性质值获得高分，权重越大越影响总评分，softness 越小越强调阈值附近的变化。",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        }
+      }
+    },
+    {
+      "id": "epso-fixed",
+      "group": "parameters",
+      "model": "epso",
+      "keys": [
+        "num_swarms",
+        "x_min",
+        "x_max",
+        "inertia_weight",
+        "phi1",
+        "phi2",
+        "phi3",
+        "v_min",
+        "v_max",
+        "decode_batch_size",
+        "decode_max_attempts",
+        "gpu"
+      ],
+      "aliases": [
+        "固定参数"
+      ],
+      "unit": "",
+      "source": "genova_runtime/epso_objectives.py",
+      "references": [
+        "epso-code"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Optimizer and decoding settings",
+          "summary": "Defaults are one swarm, search bounds −10 to 10, inertia 0.9, phi1/2/3 all 2, initial velocity −0.6 to 0.6, and decoding batches of 128 with up to four attempts. Bounds define the latent search space, inertia and velocity influence movement, and decoding batch size and attempts affect GPU memory use and runtime.",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "优化与解码设置",
+          "summary": "默认使用 1 个粒子群，搜索范围 −10 至 10，惯性 0.9，phi1/2/3 均为 2，初始速度 −0.6 至 0.6；解码每批 128，最多尝试 4 次。搜索范围决定可探索的潜在空间，惯性与速度影响移动方式，解码批量和尝试次数影响显存与耗时。",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        }
+      }
+    },
+    {
+      "id": "qed",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "qed"
+      ],
+      "aliases": [
+        "QED",
+        "类药性",
+        "药物相似性"
+      ],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "qed"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "QED · drug-likeness",
+          "summary": "A drug-likeness score combining size, lipophilicity, polarity and other properties.",
+          "details": "Higher scores indicate greater similarity to the property distribution of common oral drugs.",
+          "guidance": "",
+          "range": "0–1"
+        },
+        "zh-CN": {
+          "title": "QED · 类药性",
+          "summary": "综合分子大小、脂溶性、极性等性质得到的类药性评分。",
+          "details": "越高越接近常见口服药物的性质分布。",
+          "guidance": "",
+          "range": "0–1"
+        }
+      }
+    },
+    {
+      "id": "sa_score",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "sa_score"
+      ],
+      "aliases": [
+        "SA",
+        "SA score",
+        "合成难度",
+        "合成可及性"
+      ],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "sa"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "SA score · synthetic accessibility",
+          "summary": "Estimates synthetic difficulty from fragment frequency and structural complexity.",
+          "details": "Lower is easier to synthesize: 1 is relatively easy and 10 is difficult.",
+          "guidance": "",
+          "range": "1–10"
+        },
+        "zh-CN": {
+          "title": "SA score · 合成难度",
+          "summary": "根据片段常见程度和结构复杂度估计合成难度。",
+          "details": "越低越容易合成；1 为较容易，10 为较困难。",
+          "guidance": "",
+          "range": "1–10"
+        }
+      }
+    },
+    {
+      "id": "logp",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "logp"
+      ],
+      "aliases": [
+        "logP",
+        "脂水分配系数",
+        "亲脂性"
+      ],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "crippen",
+        "lipinski"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "LogP · lipophilicity",
+          "summary": "Estimates partitioning between octanol and water; higher values indicate greater lipophilicity.",
+          "details": "The Lipinski reference ceiling for oral small molecules is 5.",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "LogP · 亲脂性",
+          "summary": "估计分子在辛醇和水之间的分配倾向，值越高越亲脂。",
+          "details": "Lipinski 口服小分子参考上限为 5。",
+          "guidance": "",
+          "range": ""
+        }
+      }
+    },
+    {
+      "id": "molecular_weight",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "molecular_weight"
+      ],
+      "aliases": [
+        "分子量",
+        "MW"
+      ],
+      "unit": "Da",
+      "source": "tarpass/properties.py",
+      "references": [
+        "lipinski",
+        "rdkit"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Molecular weight",
+          "summary": "Molecular weight calculated from average atomic masses.",
+          "details": "Used in the platform’s Lipinski check, with a reference ceiling of 500 Da for oral small molecules.",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "平均分子量",
+          "summary": "按平均原子量计算的分子量。",
+          "details": "用于平台 Lipinski 检查，口服小分子参考上限为 500 Da。",
+          "guidance": "",
+          "range": ""
+        }
+      }
+    },
+    {
+      "id": "exact_molecular_weight",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "exact_molecular_weight"
+      ],
+      "aliases": [],
+      "unit": "Da",
+      "source": "tarpass/properties.py",
+      "references": [
+        "rdkit"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Exact molecular weight",
+          "summary": "Molecular weight calculated from exact isotope masses.",
+          "details": "For unlabeled structures this usually represents monoisotopic mass; explicit isotope labels affect the result.",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "精确分子量",
+          "summary": "按精确同位素质量计算的分子量。",
+          "details": "普通未标记结构通常对应单同位素质量，显式同位素标记会改变结果。",
+          "guidance": "",
+          "range": ""
+        }
+      }
+    },
+    {
+      "id": "tpsa",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "tpsa"
+      ],
+      "aliases": [
+        "TPSA",
+        "极性表面积"
+      ],
+      "unit": "Å²",
+      "source": "tarpass/properties.py",
+      "references": [
+        "veber",
+        "rdkit"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "TPSA · polar surface area",
+          "summary": "Estimates the surface area of polar atoms from molecular connectivity.",
+          "details": "The Veber oral-bioavailability reference combines TPSA ≤ 140 Å² with ≤ 10 rotatable bonds.",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "TPSA · 拓扑极性表面积",
+          "summary": "根据分子连接关系估计极性原子的表面积。",
+          "details": "Veber 口服生物利用度参考条件为 TPSA ≤ 140 Å² 且可旋转键 ≤ 10。",
+          "guidance": "",
+          "range": ""
+        }
+      }
+    },
+    {
+      "id": "hbd",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "hbd"
+      ],
+      "aliases": [
+        "HBD",
+        "氢键供体"
+      ],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "lipinski",
+        "rdkit"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Hydrogen-bond donors",
+          "summary": "Number of groups that can donate hydrogen to a hydrogen bond.",
+          "details": "The Lipinski reference ceiling for oral small molecules is 5.",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "氢键供体数",
+          "summary": "可向氢键提供氢的基团数量。",
+          "details": "Lipinski 口服小分子参考上限为 5。",
+          "guidance": "",
+          "range": ""
+        }
+      }
+    },
+    {
+      "id": "hba",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "hba"
+      ],
+      "aliases": [
+        "HBA",
+        "氢键受体"
+      ],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "lipinski",
+        "rdkit"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Hydrogen-bond acceptors",
+          "summary": "Number of atoms that can accept a hydrogen bond.",
+          "details": "The Lipinski reference ceiling for oral small molecules is 10.",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "氢键受体数",
+          "summary": "可接受氢键的原子数量。",
+          "details": "Lipinski 口服小分子参考上限为 10。",
+          "guidance": "",
+          "range": ""
+        }
+      }
+    },
+    {
+      "id": "rotatable_bonds",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "rotatable_bonds"
+      ],
+      "aliases": [
+        "可旋转键"
+      ],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "veber",
+        "rdkit"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Rotatable bonds",
+          "summary": "Counts rotatable bonds that allow conformational changes, using RDKit’s definition.",
+          "details": "The Veber reference combines ≤ 10 rotatable bonds with TPSA ≤ 140 Å².",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "可旋转键数",
+          "summary": "按 RDKit 定义统计可使分子改变构象的可旋转键。",
+          "details": "Veber 参考条件为可旋转键 ≤ 10 且 TPSA ≤ 140 Å²。",
+          "guidance": "",
+          "range": ""
+        }
+      }
+    },
+    {
+      "id": "heavy_atoms",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "heavy_atoms"
+      ],
+      "aliases": [
+        "重原子"
+      ],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "rdkit"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Heavy atoms",
+          "summary": "Number of non-hydrogen atoms, a measure of molecular size.",
+          "details": "Also used as the denominator for ligand efficiency per heavy atom.",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "重原子数",
+          "summary": "除氢以外的原子数量，用于衡量分子大小。",
+          "details": "也是每重原子配体效率的归一化分母。",
+          "guidance": "",
+          "range": ""
+        }
+      }
+    },
+    {
+      "id": "heteroatoms",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "heteroatoms"
+      ],
+      "aliases": [
+        "杂原子"
+      ],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "rdkit"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Heteroatoms",
+          "summary": "Number of atoms other than carbon and hydrogen, including halogens.",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "杂原子数",
+          "summary": "除碳、氢以外的原子数量，包含卤素。",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        }
+      }
+    },
+    {
+      "id": "csp3",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "csp3"
+      ],
+      "aliases": [
+        "Fsp3",
+        "Csp3",
+        "饱和度"
+      ],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "fspy",
+        "rdkit"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Fraction Csp³",
+          "summary": "Fraction of carbon atoms with sp³ hybridization.",
+          "details": "Higher values indicate a more saturated carbon framework.",
+          "guidance": "",
+          "range": "0–1"
+        },
+        "zh-CN": {
+          "title": "sp³ 碳比例",
+          "summary": "碳原子中采用 sp³ 杂化的比例。",
+          "details": "越高表示碳骨架的饱和程度越高。",
+          "guidance": "",
+          "range": "0–1"
+        }
+      }
+    },
+    {
+      "id": "molecular_volume",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "molecular_volume"
+      ],
+      "aliases": [
+        "分子体积"
+      ],
+      "unit": "Å³",
+      "source": "tarpass/properties.py",
+      "references": [
+        "volume"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Molecular volume",
+          "summary": "Volume of the input conformer, calculated by RDKit with hydrogens included.",
+          "details": "A conformer is prepared when 3D coordinates are missing; compare its size with the pocket or reference ligand.",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "分子体积",
+          "summary": "输入分子构象占据的体积，由 RDKit 加氢后计算。",
+          "details": "缺少三维坐标时先生成构象，可与口袋或参考配体大小比较。",
+          "guidance": "",
+          "range": ""
+        }
+      }
+    },
+    {
+      "id": "lipinski_violations",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "lipinski_violations"
+      ],
+      "aliases": [
+        "Lipinski",
+        "五规则",
+        "违规数"
+      ],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "lipinski"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Lipinski violations",
+          "summary": "Counts violations of MW > 500, logP > 5, HBD > 5 and HBA > 10.",
+          "details": "Zero means all four checks pass; fewer violations are preferred when applying this rule.",
+          "guidance": "",
+          "range": "Integer 0–4"
+        },
+        "zh-CN": {
+          "title": "Lipinski 违规数",
+          "summary": "统计 MW > 500、logP > 5、HBD > 5、HBA > 10 中不满足的项数。",
+          "details": "0 表示四项均通过，按此规则筛选时越少越好。",
+          "guidance": "",
+          "range": "整数 0–4"
+        }
+      }
+    },
+    {
+      "id": "pains_alert",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "pains_alert"
+      ],
+      "aliases": [
+        "PAINS",
+        "PAINS 结构警示"
+      ],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "pains"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "PAINS alert",
+          "summary": "Whether the structure matches an alert in RDKit’s PAINS catalog.",
+          "details": "Choose No (0) to exclude matching structures.",
+          "guidance": "",
+          "range": "Yes = 1; No = 0"
+        },
+        "zh-CN": {
+          "title": "PAINS 结构警示",
+          "summary": "是否命中 RDKit PAINS 规则库的结构警示。",
+          "details": "选择“否”（0）可排除命中结构。",
+          "guidance": "",
+          "range": "是 = 1；否 = 0"
+        }
+      }
+    },
+    {
+      "id": "surechembl_alert",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "surechembl_alert"
+      ],
+      "aliases": [
+        "SureChEMBL",
+        "SureChEMBL 结构警示"
+      ],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "filters"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "SureChEMBL alert",
+          "summary": "Whether the structure matches an alert in RDKit’s CHEMBL_SureChEMBL catalog.",
+          "details": "Choose No (0) to exclude matching structures.",
+          "guidance": "",
+          "range": "Yes = 1; No = 0"
+        },
+        "zh-CN": {
+          "title": "SureChEMBL 结构警示",
+          "summary": "是否命中 RDKit CHEMBL_SureChEMBL 规则库的结构警示。",
+          "details": "选择“否”（0）可排除命中结构。",
+          "guidance": "",
+          "range": "是 = 1；否 = 0"
+        }
+      }
+    },
+    {
+      "id": "glaxo_alert",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "glaxo_alert"
+      ],
+      "aliases": [
+        "Glaxo",
+        "Glaxo 结构警示"
+      ],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "filters"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Glaxo alert",
+          "summary": "Whether the structure matches an alert in RDKit’s CHEMBL_Glaxo catalog.",
+          "details": "Choose No (0) to exclude matching structures.",
+          "guidance": "",
+          "range": "Yes = 1; No = 0"
+        },
+        "zh-CN": {
+          "title": "Glaxo 结构警示",
+          "summary": "是否命中 RDKit CHEMBL_Glaxo 规则库的结构警示。",
+          "details": "选择“否”（0）可排除命中结构。",
+          "guidance": "",
+          "range": "是 = 1；否 = 0"
+        }
+      }
+    },
+    {
+      "id": "complete",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "complete"
+      ],
+      "aliases": [
+        "完整性",
+        "连通性"
+      ],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "rdkit"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Connected molecule",
+          "summary": "Whether the molecule consists of a single connected component.",
+          "details": "Choose Yes (1) to select single-component ligand structures.",
+          "guidance": "",
+          "range": "Yes = 1; No = 0"
+        },
+        "zh-CN": {
+          "title": "分子连通性",
+          "summary": "分子是否只有一个连通部分。",
+          "details": "筛选单个配体结构时选“是”（1）。",
+          "guidance": "",
+          "range": "是 = 1；否 = 0"
+        }
+      }
+    },
+    {
+      "id": "all_common",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "all_common"
+      ],
+      "aliases": [
+        "常见元素"
+      ],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "rdkit"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Common elements only",
+          "summary": "Whether every atom belongs to C, H, O, N, F, Cl, Br, I, P, S or B.",
+          "details": "Choose Yes (1) to restrict results to these common elements.",
+          "guidance": "",
+          "range": "Yes = 1; No = 0"
+        },
+        "zh-CN": {
+          "title": "仅含常见元素",
+          "summary": "所有原子是否均属于 C、H、O、N、F、Cl、Br、I、P、S、B。",
+          "details": "限定这些常见元素时选“是”（1）。",
+          "guidance": "",
+          "range": "是 = 1；否 = 0"
+        }
+      }
+    },
+    {
+      "id": "heteroatom_ratio",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "heteroatom_ratio"
+      ],
+      "aliases": [],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "rdkit"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Heteroatom ratio",
+          "summary": "Heteroatom count divided by heavy-atom count, expressing the heteroatom fraction of the framework.",
+          "details": "",
+          "guidance": "",
+          "range": "0–1"
+        },
+        "zh-CN": {
+          "title": "杂原子比例",
+          "summary": "杂原子数除以重原子数，表示杂原子在骨架中的占比。",
+          "details": "",
+          "guidance": "",
+          "range": "0–1"
+        }
+      }
+    },
+    {
+      "id": "flexibility",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "flexibility"
+      ],
+      "aliases": [
+        "柔性"
+      ],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "rdkit"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Flexibility ratio",
+          "summary": "Describes flexibility as the ratio of rotatable bonds to the remaining framework.",
+          "details": "Calculated as rotatable_bonds / max(1, heavy_atoms − 1 − rotatable_bonds); values can exceed 1.",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "柔性比值",
+          "summary": "以可旋转键相对其余骨架的比例描述柔性。",
+          "details": "计算为 rotatable_bonds / max(1, heavy_atoms − 1 − rotatable_bonds)，可以大于 1。",
+          "guidance": "",
+          "range": ""
+        }
+      }
+    },
+    {
+      "id": "spiro_atoms",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "spiro_atoms"
+      ],
+      "aliases": [
+        "螺原子"
+      ],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "rdkit"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Spiro atoms",
+          "summary": "Counts spiro atoms, where two rings share exactly one atom.",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "螺原子数",
+          "summary": "两个环仅共享一个原子时，该共享原子计为一个螺原子。",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        }
+      }
+    },
+    {
+      "id": "chiral_atoms",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "chiral_atoms"
+      ],
+      "aliases": [
+        "手性",
+        "立体中心"
+      ],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "rdkit"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Chiral centers",
+          "summary": "Number of identified atom stereocenters, including centers with unspecified configuration.",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "手性中心数",
+          "summary": "识别出的原子手性中心数量，包含未指定构型的中心。",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        }
+      }
+    },
+    {
+      "id": "morgan_fragments",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "morgan_fragments"
+      ],
+      "aliases": [
+        "Morgan fragments",
+        "Morgan 片段"
+      ],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "morgan"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Morgan fragment environments",
+          "summary": "Number of distinct local atom environments in a radius-2 Morgan fingerprint.",
+          "details": "Reflects the variety of local structural environments.",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "Morgan 局部环境数",
+          "summary": "radius=2 的 Morgan 指纹中不同局部原子环境的数量。",
+          "details": "数值反映局部结构的丰富程度。",
+          "guidance": "",
+          "range": ""
+        }
+      }
+    },
+    {
+      "id": "bertz_ct",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "bertz_ct"
+      ],
+      "aliases": [
+        "Bertz",
+        "结构复杂度"
+      ],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "bertz"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Bertz complexity",
+          "summary": "Bertz structural complexity, calculated from molecular connectivity and atom types.",
+          "details": "Higher values indicate greater structural complexity.",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "Bertz 结构复杂度",
+          "summary": "根据分子连接方式和原子类型计算的 Bertz 结构复杂度。",
+          "details": "越高表示结构越复杂。",
+          "guidance": "",
+          "range": ""
+        }
+      }
+    },
+    {
+      "id": "spacial_score",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "spacial_score"
+      ],
+      "aliases": [
+        "SPS",
+        "nSPS",
+        "spatial score",
+        "空间复杂度"
+      ],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "sps"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Normalized spacial score · nSPS",
+          "summary": "Describes structural complexity using hybridization, stereochemistry, rings and local connectivity.",
+          "details": "The platform uses nSPS, normalized by heavy-atom count; higher values indicate greater spatial complexity.",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "归一化空间复杂度 · nSPS",
+          "summary": "综合杂化、立体化学、环和局部连接描述结构复杂度。",
+          "details": "平台使用按重原子数归一化的 nSPS，越高表示空间复杂度越高。",
+          "guidance": "",
+          "range": ""
+        }
+      }
+    },
+    {
+      "id": "torsion_count",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "torsion_count"
+      ],
+      "aliases": [
+        "torsion",
+        "扭转角",
+        "扭转数"
+      ],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "rdkit"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Torsion count",
+          "summary": "Number of central bonds that form eligible four-atom torsion paths.",
+          "details": "The platform pattern excludes ring, terminal and triple-bond-related cases and differs from RDKit’s rotatable-bond definition.",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "可扭转中心键数",
+          "summary": "可构成四原子扭转路径的中心键数量。",
+          "details": "平台模式排除环键、末端及三键相关情况，与 RDKit 可旋转键定义不同。",
+          "guidance": "",
+          "range": ""
+        }
+      }
+    },
+    {
+      "id": "ring_count",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "ring_count"
+      ],
+      "aliases": [
+        "环数量"
+      ],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "rdkit"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Ring count",
+          "summary": "Number of rings identified by RDKit AtomRings.",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "环数量",
+          "summary": "RDKit AtomRings 识别出的环数量。",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        }
+      }
+    },
+    {
+      "id": "largest_ring",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "largest_ring"
+      ],
+      "aliases": [
+        "最大环尺寸"
+      ],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "rdkit"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Largest ring size",
+          "summary": "Atom count of the largest identified ring; zero for an acyclic molecule.",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "最大环尺寸",
+          "summary": "已识别环中最大环的原子数，无环时为 0。",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        }
+      }
+    },
+    {
+      "id": "unusual_rings",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "unusual_rings"
+      ],
+      "aliases": [
+        "非常规环数量"
+      ],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "rdkit"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Unusual ring count",
+          "summary": "Number of three-, four- and eight-membered or larger rings.",
+          "details": "Zero means all identified rings have five to seven members.",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "非常规环数量",
+          "summary": "三元、四元和八元及以上环的数量。",
+          "details": "0 表示识别出的环均为五至七元环。",
+          "guidance": "",
+          "range": ""
+        }
+      }
+    },
+    {
+      "id": "fused_systems",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "fused_systems"
+      ],
+      "aliases": [
+        "稠环体系数"
+      ],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "rdkit"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Fused ring systems",
+          "summary": "Number of independent ring systems connected by ring fusion.",
+          "details": "Isolated single rings are excluded.",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "稠环体系数",
+          "summary": "通过稠合连接组成的独立环体系数量。",
+          "details": "孤立单环不计入。",
+          "guidance": "",
+          "range": ""
+        }
+      }
+    },
+    {
+      "id": "rings_in_fused_system",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "rings_in_fused_system"
+      ],
+      "aliases": [
+        "稠环体系内环数"
+      ],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "rdkit"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Rings in fused systems",
+          "summary": "Total number of rings participating in fused ring systems.",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "稠环体系内环数",
+          "summary": "所有稠环体系中参与稠合的环数之和。",
+          "details": "",
+          "guidance": "",
+          "range": ""
+        }
+      }
+    },
+    {
+      "id": "highly_fused",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "highly_fused"
+      ],
+      "aliases": [
+        "存在高度稠合体系"
+      ],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "rdkit"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "At least three fused rings",
+          "summary": "Whether any fused ring system contains at least three rings.",
+          "details": "",
+          "guidance": "",
+          "range": "Yes = 1; No = 0"
+        },
+        "zh-CN": {
+          "title": "含三个及以上相连稠环",
+          "summary": "分子中是否有三个或更多环，通过共用环上的键连接成同一个稠环系统。",
+          "details": "两个环共用一条键时称为稠合；只通过一根单键连接的独立环不属于这种情况。",
+          "guidance": "选择“否”会排除这类分子；选择“是”只保留这类分子。",
+          "range": "是 = 1；否 = 0"
+        }
+      }
+    },
+    {
+      "id": "unusual_ring_present",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "unusual_ring_present"
+      ],
+      "aliases": [
+        "存在非常规环"
+      ],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "rdkit"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Unusual ring present",
+          "summary": "Whether any ring falls outside five to seven members, equivalent to unusual_rings > 0.",
+          "details": "",
+          "guidance": "",
+          "range": "Yes = 1; No = 0"
+        },
+        "zh-CN": {
+          "title": "存在非常规环",
+          "summary": "是否存在五至七元环以外的环，即 unusual_rings > 0。",
+          "details": "",
+          "guidance": "",
+          "range": "是 = 1；否 = 0"
+        }
+      }
+    },
+    {
+      "id": "fused_ring_present",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "fused_ring_present"
+      ],
+      "aliases": [
+        "存在稠环"
+      ],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "rdkit"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Fused ring present",
+          "summary": "Whether at least one fused ring system exists, equivalent to fused_systems > 0.",
+          "details": "",
+          "guidance": "",
+          "range": "Yes = 1; No = 0"
+        },
+        "zh-CN": {
+          "title": "存在稠环",
+          "summary": "是否存在至少一个稠环体系，即 fused_systems > 0。",
+          "details": "",
+          "guidance": "",
+          "range": "是 = 1；否 = 0"
+        }
+      }
+    },
+    {
+      "id": "reference_similarity",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "reference_similarity"
+      ],
+      "aliases": [
+        "参考集合相似度",
+        "Tanimoto"
+      ],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "morgan"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Reference-set similarity",
+          "summary": "Tanimoto similarity to the closest molecule in a reference dataset.",
+          "details": "Uses radius-2, 2,048-bit Morgan fingerprints and requires a separate reference dataset; higher is more similar.",
+          "guidance": "",
+          "range": "0–1"
+        },
+        "zh-CN": {
+          "title": "参考集合相似度",
+          "summary": "与参考分子集合中最相近分子的 Tanimoto 相似度。",
+          "details": "使用 radius=2、2048-bit Morgan 指纹，需要额外参考集合；越高越相似。",
+          "guidance": "",
+          "range": "0–1"
+        }
+      }
+    },
+    {
+      "id": "scaffold_similarity",
+      "group": "properties",
+      "model": "tarpass",
+      "keys": [
+        "scaffold_similarity"
+      ],
+      "aliases": [
+        "骨架相似度",
+        "骨架"
+      ],
+      "unit": "",
+      "source": "tarpass/properties.py",
+      "references": [
+        "morgan",
+        "murcko"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Scaffold similarity",
+          "summary": "Morgan fingerprint similarity to the closest Bemis–Murcko scaffold in the reference dataset.",
+          "details": "Requires a reference dataset; higher is more similar, while acyclic molecules have no scaffold value.",
+          "guidance": "",
+          "range": "0–1"
+        },
+        "zh-CN": {
+          "title": "骨架相似度",
+          "summary": "与参考集合中最近 Bemis–Murcko 骨架的 Morgan 指纹相似度。",
+          "details": "需要参考集合，越高越相似；无环分子的骨架值为空。",
+          "guidance": "",
+          "range": "0–1"
+        }
+      }
+    },
+    {
+      "id": "affinity",
+      "group": "poses",
+      "model": "tarpass",
+      "keys": [
+        "original.affinity",
+        "docked.affinity"
+      ],
+      "aliases": [
+        "affinity",
+        "对接分数",
+        "亲和力"
+      ],
+      "unit": "kcal/mol",
+      "source": "tarpass/poses.py",
+      "references": [
+        "gnina"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Gnina affinity",
+          "summary": "The Gnina minimizedAffinity docking score.",
+          "details": "Original scores the supplied pose and Docked scores the redocked pose; more negative is generally better for the same receptor and preparation.",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "Gnina 对接亲和力分数",
+          "summary": "Gnina minimizedAffinity 对接评分。",
+          "details": "Original 对输入姿态评分，Docked 对重新对接姿态评分；相同受体和准备条件下通常越负越好。",
+          "guidance": "",
+          "range": ""
+        }
+      }
+    },
+    {
+      "id": "cnn_score",
+      "group": "poses",
+      "model": "tarpass",
+      "keys": [
+        "original.cnn_score",
+        "docked.cnn_score"
+      ],
+      "aliases": [
+        "CNNscore",
+        "cnn score"
+      ],
+      "unit": "",
+      "source": "tarpass/poses.py",
+      "references": [
+        "gnina"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "CNN pose score",
+          "summary": "Gnina neural-network score for how closely a pose resembles a native binding pose.",
+          "details": "Higher scores are generally preferred for pose ranking.",
+          "guidance": "",
+          "range": "0–1"
+        },
+        "zh-CN": {
+          "title": "CNN 姿态分数",
+          "summary": "Gnina 神经网络评估姿态接近真实结合姿态的程度。",
+          "details": "姿态排序时通常越高越好。",
+          "guidance": "",
+          "range": "0–1"
+        }
+      }
+    },
+    {
+      "id": "cnn_affinity",
+      "group": "poses",
+      "model": "tarpass",
+      "keys": [
+        "original.cnn_affinity",
+        "docked.cnn_affinity"
+      ],
+      "aliases": [
+        "CNNaffinity"
+      ],
+      "unit": "",
+      "source": "tarpass/poses.py",
+      "references": [
+        "gnina"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "CNN affinity",
+          "summary": "Gnina neural-network affinity prediction on a pK-like logarithmic scale.",
+          "details": "Higher is generally preferred under comparable conditions.",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "CNN 亲和力",
+          "summary": "Gnina 神经网络在类似 pK 的对数尺度上预测的亲和力。",
+          "details": "可比条件下通常越高越好。",
+          "guidance": "",
+          "range": ""
+        }
+      }
+    },
+    {
+      "id": "no_clashes",
+      "group": "poses",
+      "model": "tarpass",
+      "keys": [
+        "original.no_clashes",
+        "docked.no_clashes"
+      ],
+      "aliases": [
+        "碰撞",
+        "clashes"
+      ],
+      "unit": "",
+      "source": "tarpass/poses.py",
+      "references": [
+        "posebusters"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "No protein–ligand clashes",
+          "summary": "Whether the pose passes PoseBusters’ protein–ligand distance clash check.",
+          "details": "Choose Yes (1) to retain poses without detected clashes.",
+          "guidance": "",
+          "range": "Yes = 1; No = 0"
+        },
+        "zh-CN": {
+          "title": "无蛋白–配体碰撞",
+          "summary": "姿态是否通过 PoseBusters 的蛋白–配体距离碰撞检查。",
+          "details": "选择“是”（1）保留未检测到碰撞的姿态。",
+          "guidance": "",
+          "range": "是 = 1；否 = 0"
+        }
+      }
+    },
+    {
+      "id": "sucos",
+      "group": "poses",
+      "model": "tarpass",
+      "keys": [
+        "original.sucos",
+        "docked.sucos"
+      ],
+      "aliases": [
+        "SuCOS"
+      ],
+      "unit": "",
+      "source": "tarpass/poses.py",
+      "references": [
+        "sucos"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "SuCOS · feature and shape overlap",
+          "summary": "Shape and chemical-feature overlap between the current pose and reference ligand.",
+          "details": "Requires a 3D reference in the same coordinate frame, with no realignment; higher is more similar.",
+          "guidance": "",
+          "range": "0–1"
+        },
+        "zh-CN": {
+          "title": "SuCOS · 特征与形状重叠",
+          "summary": "当前姿态与参考配体的形状和化学特征重叠程度。",
+          "details": "需要同一坐标系中的三维参考配体，不重新对齐；越高越相似。",
+          "guidance": "",
+          "range": "0–1"
+        }
+      }
+    },
+    {
+      "id": "shape_similarity",
+      "group": "poses",
+      "model": "tarpass",
+      "keys": [
+        "original.shape_similarity",
+        "docked.shape_similarity"
+      ],
+      "aliases": [
+        "形状相似性"
+      ],
+      "unit": "",
+      "source": "tarpass/poses.py",
+      "references": [
+        "shape"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Shape similarity",
+          "summary": "3D shape overlap between the current pose and reference ligand.",
+          "details": "Calculated as 1 − ShapeTanimotoDist using heavy atoms without realignment; higher is more similar.",
+          "guidance": "",
+          "range": "0–1"
+        },
+        "zh-CN": {
+          "title": "形状相似度",
+          "summary": "当前姿态与参考配体的三维形状重叠程度。",
+          "details": "计算为 1 − ShapeTanimotoDist，使用重原子且不重新对齐；越高越相似。",
+          "guidance": "",
+          "range": "0–1"
+        }
+      }
+    },
+    {
+      "id": "electrostatic_similarity",
+      "group": "poses",
+      "model": "tarpass",
+      "keys": [
+        "original.electrostatic_similarity",
+        "docked.electrostatic_similarity"
+      ],
+      "aliases": [
+        "ESP",
+        "静电相似性"
+      ],
+      "unit": "",
+      "source": "tarpass/poses.py",
+      "references": [
+        "esp"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Electrostatic similarity",
+          "summary": "Similarity of spatial charge distributions between the current pose and reference ligand.",
+          "details": "Uses MMFF charges and Gaussian overlap, mapped as (Carbo + 1) / 2; 1 is more similar, 0.5 is zero overlap, and lower values indicate opposing distributions.",
+          "guidance": "",
+          "range": "0–1"
+        },
+        "zh-CN": {
+          "title": "静电相似度",
+          "summary": "当前姿态与参考配体的空间电荷分布相似度。",
+          "details": "使用 MMFF 电荷与高斯重叠计算 Carbo，再按 (Carbo + 1) / 2 映射；1 表示更相似，0.5 对应零重叠，更低表示相反分布。",
+          "guidance": "",
+          "range": "0–1"
+        }
+      }
+    },
+    {
+      "id": "centroid_shift",
+      "group": "poses",
+      "model": "tarpass",
+      "keys": [
+        "original.centroid_shift",
+        "docked.centroid_shift"
+      ],
+      "aliases": [
+        "质心位移",
+        "centroid"
+      ],
+      "unit": "Å",
+      "source": "tarpass/poses.py",
+      "references": [
+        "shape"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Centroid shift",
+          "summary": "Distance between the heavy-atom geometric centers of the candidate and reference ligand.",
+          "details": "Centers are unweighted coordinate averages; lower values mean closer centers.",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "质心偏移",
+          "summary": "候选与参考配体重原子几何中心之间的距离。",
+          "details": "坐标按原子直接平均，越小表示两个中心越接近。",
+          "guidance": "",
+          "range": ""
+        }
+      }
+    },
+    {
+      "id": "le_heavyatom",
+      "group": "poses",
+      "model": "tarpass",
+      "keys": [
+        "original.le_heavyatom",
+        "docked.le_heavyatom"
+      ],
+      "aliases": [
+        "每重原子配体效率"
+      ],
+      "unit": "kcal/mol/heavy atom",
+      "source": "tarpass/poses.py",
+      "references": [
+        "gnina"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Ligand efficiency per heavy atom",
+          "summary": "Normalizes a favorable docking score by heavy-atom count.",
+          "details": "For affinity < 0, calculated as abs(affinity) / heavy_atoms; higher means a more favorable score per atom.",
+          "guidance": "",
+          "range": "> 0; unavailable when affinity ≥ 0"
+        },
+        "zh-CN": {
+          "title": "每重原子配体效率",
+          "summary": "将有利的对接分数按重原子数归一化。",
+          "details": "affinity < 0 时为 abs(affinity) / heavy_atoms，否则为空；越高表示单位大小的评分越有利。",
+          "guidance": "",
+          "range": "> 0；affinity ≥ 0 时为空"
+        }
+      }
+    },
+    {
+      "id": "le_mw",
+      "group": "poses",
+      "model": "tarpass",
+      "keys": [
+        "original.le_mw",
+        "docked.le_mw"
+      ],
+      "aliases": [
+        "按质量归一化配体效率"
+      ],
+      "unit": "kcal/mol/Da",
+      "source": "tarpass/poses.py",
+      "references": [
+        "gnina"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Ligand efficiency per mass",
+          "summary": "Normalizes a favorable docking score by exact molecular weight.",
+          "details": "For affinity < 0, calculated as abs(affinity) / exact molecular weight; higher means a more favorable score per mass.",
+          "guidance": "",
+          "range": "> 0; unavailable when affinity ≥ 0"
+        },
+        "zh-CN": {
+          "title": "按质量归一化配体效率",
+          "summary": "将有利的对接分数按精确分子量归一化。",
+          "details": "affinity < 0 时为 abs(affinity) / 精确分子量，否则为空；越高表示单位质量的评分越有利。",
+          "guidance": "",
+          "range": "> 0；affinity ≥ 0 时为空"
+        }
+      }
+    },
+    {
+      "id": "matched_rate",
+      "group": "poses",
+      "model": "tarpass",
+      "keys": [
+        "original.matched_rate",
+        "docked.matched_rate"
+      ],
+      "aliases": [
+        "匹配率"
+      ],
+      "unit": "",
+      "source": "tarpass/poses.py",
+      "references": [
+        "plip"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Key-interaction match rate",
+          "summary": "Fraction of configured key-interaction rules satisfied by the pose.",
+          "details": "One means all rules match; any requires one selected residue and all requires every selected residue.",
+          "guidance": "",
+          "range": "0–1; unavailable without rules"
+        },
+        "zh-CN": {
+          "title": "关键相互作用匹配率",
+          "summary": "满足的关键相互作用规则数占已设置规则数的比例。",
+          "details": "1 表示全部匹配；规则中的 any 要求任一所选残基匹配，all 要求全部匹配。",
+          "guidance": "",
+          "range": "0–1；未设置规则时为空"
+        }
+      }
+    },
+    {
+      "id": "fully_matched",
+      "group": "poses",
+      "model": "tarpass",
+      "keys": [
+        "original.fully_matched",
+        "docked.fully_matched"
+      ],
+      "aliases": [
+        "全部匹配"
+      ],
+      "unit": "",
+      "source": "tarpass/poses.py",
+      "references": [
+        "plip"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "All key interactions matched",
+          "summary": "Whether all configured key-interaction rules are satisfied.",
+          "details": "Choose Yes (1) to require every specified interaction.",
+          "guidance": "",
+          "range": "Yes = 1; No = 0; unavailable without rules"
+        },
+        "zh-CN": {
+          "title": "关键相互作用全部匹配",
+          "summary": "是否满足全部已设置的关键相互作用规则。",
+          "details": "要求保留所有指定相互作用时选“是”（1）。",
+          "guidance": "",
+          "range": "是 = 1；否 = 0；未设置规则时为空"
+        }
+      }
+    },
+    {
+      "id": "volume",
+      "group": "poses",
+      "model": "tarpass",
+      "keys": [
+        "original.volume",
+        "docked.volume"
+      ],
+      "aliases": [
+        "姿态体积"
+      ],
+      "unit": "Å³",
+      "source": "tarpass/poses.py",
+      "references": [
+        "volume"
+      ],
+      "translations": {
+        "en-US": {
+          "title": "Pose volume",
+          "summary": "Volume of the evaluated Original or Docked pose with hydrogens included.",
+          "details": "Compare with the size of the pocket or reference ligand.",
+          "guidance": "",
+          "range": ""
+        },
+        "zh-CN": {
+          "title": "姿态体积",
+          "summary": "被评估的 Original 或 Docked 姿态加氢后所占的体积。",
+          "details": "可结合口袋或参考配体大小比较。",
+          "guidance": "",
+          "range": ""
+        }
+      }
+    },
+    {
+      "id": "tarpass",
+      "group": "guides",
+      "model": "tarpass",
+      "keys": [],
+      "aliases": [
+        "TarPass",
+        "后处理",
+        "后筛选",
+        "postprocessing"
+      ],
+      "unit": "",
+      "source": "genova_frontend/src/pages/postprocessing/index.vue; genova_frontend/src/components/molecule/TarPassPanel.vue",
+      "references": [
+        "gnina",
+        "plip"
+      ],
+      "translations": {
+        "zh-CN": {
+          "title": "TarPass 后处理操作说明",
+          "summary": "为生成或优化结果计算性质、对接评分和姿态指标，再筛选、聚类与导出。",
+          "details": "",
+          "guidance": "",
+          "range": "",
+          "action": "打开后处理",
+          "sections": [
+            {
+              "title": "输入要求",
+              "items": [
+                "成功完成的从头生成或先导优化任务。用于相似度比较的参考分子集合可准备为 SDF、SMI 或 TXT。"
+              ],
+              "ordered": false
+            },
+            {
+              "title": "操作步骤",
+              "items": [
+                "从生成结果页点击“在后处理中打开”，或进入“后处理”选择源任务。",
+                "在左侧确认源任务、分子数、蛋白环境和参考配体，在右侧浏览源分子。",
+                "需要计算参考集合相似度时，勾选参考分子比较并上传集合。",
+                "按需要添加性质前筛条件；添加关键相互作用时，选择类型和残基并点击“确认规则”。",
+                "填写任务名并点击“提交任务”；完成后在任务结果中打开 TarPass 结果。",
+                "设置结果筛选、表头排序和聚类，点击应用后导出 CSV 或选择姿态导出 SDF。"
+              ],
+              "ordered": true
+            },
+            {
+              "title": "结果与下一步",
+              "items": [
+                "性质前筛决定哪些分子继续进入对接；结果筛选用于整理已经计算好的候选。",
+                "点击分子 ID 或“三维视图”查看姿态；使用“显示指标”选择表格列。"
+              ],
+              "ordered": false
+            },
+            {
+              "title": "处理方法",
+              "items": [
+                "列表中找不到源任务：在“任务与结果”查看生成或优化任务是否已完成，再刷新后处理页面。"
+              ],
+              "ordered": false
+            }
+          ]
+        },
+        "en-US": {
+          "title": "TarPass Postprocessing",
+          "summary": "Calculate properties, docking scores and pose metrics, then filter, cluster and export candidates.",
+          "details": "",
+          "guidance": "",
+          "range": "",
+          "action": "Open Postprocessing",
+          "sections": [
+            {
+              "title": "Inputs",
+              "items": [
+                "A successful generation or optimization task. Reference sets for similarity comparison can be SDF, SMI or TXT."
+              ],
+              "ordered": false
+            },
+            {
+              "title": "Steps",
+              "items": [
+                "Choose Open in Postprocessing from generation results, or open Postprocessing and select a source task.",
+                "Check the source task, molecule count, Context and ligand on the left; browse source molecules on the right.",
+                "For reference-set similarity, enable reference comparison and upload the set.",
+                "Add property prefilters as needed. For key interactions, choose a type and residues, then click Confirm rule.",
+                "Name the task and click Submit task. Open its TarPass results when complete.",
+                "Set result filters, table sorting and clustering. Apply them, then export CSV or select a pose for SDF."
+              ],
+              "ordered": true
+            },
+            {
+              "title": "Results and next steps",
+              "items": [
+                "Property prefilters select molecules for docking. Result filters organize the calculated candidates.",
+                "Click a molecule ID or 3D view to inspect poses. Use Visible metrics to choose table columns."
+              ],
+              "ordered": false
+            },
+            {
+              "title": "Solutions",
+              "items": [
+                "If the source task is missing, check its completion in Tasks & Results and refresh Postprocessing."
+              ],
+              "ordered": false
+            }
+          ]
+        }
+      },
+      "guide_section": "modules",
+      "route": "/postprocessing",
+      "related": [
+        "filtering",
+        "pose-stages",
+        "interactions",
+        "clustering",
+        "exports"
+      ]
+    },
+    {
+      "id": "filtering",
+      "group": "guides",
+      "model": "tarpass",
+      "keys": [
+        "filters",
+        "op",
+        "value",
+        "include_prefiltered",
+        "include_failed",
+        "sort_by",
+        "descending"
+      ],
+      "aliases": [
+        "filter",
+        "筛选条件",
+        "缺失值",
+        "排序"
+      ],
+      "unit": "",
+      "source": "genova_frontend/src/components/molecule/TarPassPanel.vue; tarpass/filters.py",
+      "references": [],
+      "translations": {
+        "zh-CN": {
+          "title": "筛选与排序",
+          "summary": "用性质前筛减少进入对接的分子，用结果筛选和排序整理候选。",
+          "details": "",
+          "guidance": "",
+          "range": "",
+          "action": "打开任务与结果",
+          "sections": [
+            {
+              "title": "输入要求",
+              "items": [
+                "性质前筛在提交 TarPass 前设置；结果筛选在 TarPass 结果页设置。"
+              ],
+              "ordered": false
+            },
+            {
+              "title": "操作步骤",
+              "items": [
+                "提交前：在“性质前筛”点击添加条件，选择指标、比较符和阈值。",
+                "结果页：在“筛选条件”点击添加条件，填写指标、比较符和阈值；多个条件同时生效。",
+                "点击“应用筛选”，查看更新后的记录数量。",
+                "用表头上下箭头选择排序指标和升降序；需要其他列时打开“显示指标”。",
+                "需要查看前筛排除或计算失败记录时，勾选对应的显示选项。"
+              ],
+              "ordered": true
+            },
+            {
+              "title": "结果与下一步",
+              "items": [
+                "后续聚类和导出使用已经应用的筛选条件；“清除筛选”恢复全部记录。",
+                "数值条件筛选会排除该指标缺失的记录。"
+              ],
+              "ordered": false
+            }
+          ]
+        },
+        "en-US": {
+          "title": "Filtering and sorting",
+          "summary": "Use property prefilters before docking and result filters to organize evaluated candidates.",
+          "details": "",
+          "guidance": "",
+          "range": "",
+          "action": "Open Tasks & Results",
+          "sections": [
+            {
+              "title": "Inputs",
+              "items": [
+                "Set property prefilters before submitting TarPass; set result filters on its results page."
+              ],
+              "ordered": false
+            },
+            {
+              "title": "Steps",
+              "items": [
+                "Before submission, add a property prefilter and choose its metric, operator and threshold.",
+                "On the results page, add conditions under Result filters. Set each metric, operator and threshold. Conditions are combined.",
+                "Click Apply filters and check the updated record count.",
+                "Use table-header arrows to choose the sort metric and direction. Open Visible metrics to add columns.",
+                "Enable the corresponding options to include prefiltered or failed records."
+              ],
+              "ordered": true
+            },
+            {
+              "title": "Results and next steps",
+              "items": [
+                "Clustering and export use the applied filters. Clear filters restores all records.",
+                "Numeric filters exclude records missing the selected metric."
+              ],
+              "ordered": false
+            }
+          ]
+        }
+      },
+      "guide_section": "basics",
+      "route": "/results",
+      "related": [
+        "tarpass",
+        "qed",
+        "affinity",
+        "clustering",
+        "exports"
+      ]
+    },
+    {
+      "id": "pose-stages",
+      "group": "guides",
+      "model": "tarpass",
+      "keys": [
+        "original",
+        "docked"
+      ],
+      "aliases": [
+        "原始姿态",
+        "对接姿态",
+        "original pose",
+        "docked pose"
+      ],
+      "unit": "",
+      "source": "genova_frontend/src/components/molecule/TarPassPanel.vue; genova_frontend/src/components/molecule/BindingPoseViewer.vue",
+      "references": [
+        "gnina"
+      ],
+      "translations": {
+        "zh-CN": {
+          "title": "查看原始姿态与对接姿态",
+          "summary": "在同一分子详情中查看生成姿态、重新对接姿态及对应指标。",
+          "details": "",
+          "guidance": "",
+          "range": "",
+          "action": "打开任务与结果",
+          "sections": [
+            {
+              "title": "输入要求",
+              "items": [
+                "已完成的 TarPass 结果。"
+              ],
+              "ordered": false
+            },
+            {
+              "title": "操作步骤",
+              "items": [
+                "点击分子 ID 或“三维视图”。",
+                "选择“原始姿态”（Original）查看输入的三维结构，选择“对接姿态”（Docked）查看重新对接后的结构。",
+                "需要比较两种位置时选择叠合视图；在对应姿态下查看评分和相互作用。"
+              ],
+              "ordered": true
+            },
+            {
+              "title": "结果与下一步",
+              "items": [
+                "SurfGen / DELETE 的三维输入可查看原始姿态和对接姿态；ECloudGen / EPSO 经 TarPass 后查看对接姿态。",
+                "表格中的 original.* 与 docked.* 分别对应这两组结果；SDF 导出时选择所需姿态。"
+              ],
+              "ordered": false
+            }
+          ]
+        },
+        "en-US": {
+          "title": "Viewing original and docked poses",
+          "summary": "Inspect generated and redocked poses with their matching metrics.",
+          "details": "",
+          "guidance": "",
+          "range": "",
+          "action": "Open Tasks & Results",
+          "sections": [
+            {
+              "title": "Inputs",
+              "items": [
+                "Completed TarPass results."
+              ],
+              "ordered": false
+            },
+            {
+              "title": "Steps",
+              "items": [
+                "Click a molecule ID or 3D view.",
+                "Choose Original for the supplied 3D structure or Docked for the redocked structure.",
+                "Choose the overlay view to compare positions. Inspect scores and interactions for the selected pose."
+              ],
+              "ordered": true
+            },
+            {
+              "title": "Results and next steps",
+              "items": [
+                "SurfGen / DELETE 3D inputs provide original and docked poses. ECloudGen / EPSO results are viewed as docked poses after TarPass.",
+                "The original.* and docked.* columns refer to these two stages. Select the pose when exporting SDF."
+              ],
+              "ordered": false
+            }
+          ]
+        }
+      },
+      "guide_section": "basics",
+      "route": "/results",
+      "related": [
+        "tarpass",
+        "affinity",
+        "exports"
+      ]
+    },
+    {
+      "id": "interactions",
+      "keys": [
+        "key_interactions",
+        "interaction_type",
+        "match_mode",
+        "residues"
+      ],
+      "aliases": [
+        "相互作用",
+        "关键残基",
+        "氢键",
+        "PLIP"
+      ],
+      "unit": "",
+      "references": [
+        "plip"
+      ],
+      "group": "guides",
+      "guide_section": "basics",
+      "model": "tarpass",
+      "route": "/postprocessing",
+      "source": "genova_frontend/src/components/molecule/TarPassPanel.vue",
+      "related": [
+        "tarpass",
+        "matched_rate",
+        "filtering"
+      ],
+      "translations": {
+        "zh-CN": {
+          "title": "设置关键相互作用",
+          "summary": "指定需要检查的相互作用类型和蛋白残基。",
+          "details": "",
+          "guidance": "",
+          "range": "",
+          "action": "打开后处理",
+          "sections": [
+            {
+              "title": "输入要求",
+              "items": [
+                "在后处理中选好源任务。"
+              ],
+              "ordered": false
+            },
+            {
+              "title": "操作步骤",
+              "items": [
+                "在“关键相互作用”点击“添加规则”。",
+                "选择相互作用类型，并选择“任一残基”或“全部残基”匹配方式。",
+                "添加目标残基，核对链、残基名称和编号，点击“确认规则”。",
+                "添加其余规则后提交后处理任务。"
+              ],
+              "ordered": true
+            },
+            {
+              "title": "结果与下一步",
+              "items": [
+                "结果中按相互作用匹配指标筛选分子；在三维视图中检查对应姿态及相互作用。"
+              ],
+              "ordered": false
+            }
+          ]
+        },
+        "en-US": {
+          "title": "Setting key interactions",
+          "summary": "Choose the interaction types and protein residues to evaluate.",
+          "details": "",
+          "guidance": "",
+          "range": "",
+          "action": "Open Postprocessing",
+          "sections": [
+            {
+              "title": "Inputs",
+              "items": [
+                "Select a source task in Postprocessing."
+              ],
+              "ordered": false
+            },
+            {
+              "title": "Steps",
+              "items": [
+                "Under Key interactions, click Add rule.",
+                "Choose an interaction type and an any-residue or all-residues match mode.",
+                "Add target residues, check their chains, names and numbers, then click Confirm rule.",
+                "Add further rules and submit postprocessing."
+              ],
+              "ordered": true
+            },
+            {
+              "title": "Results and next steps",
+              "items": [
+                "Filter results by interaction matching metrics and inspect the matching pose and interactions in the 3D view."
+              ],
+              "ordered": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "clustering",
+      "group": "guides",
+      "model": "tarpass",
+      "keys": [
+        "basis",
+        "similarity_threshold",
+        "representatives_per_cluster",
+        "representatives_only"
+      ],
+      "aliases": [
+        "聚类",
+        "代表分子",
+        "Butina"
+      ],
+      "unit": "",
+      "source": "genova_frontend/src/components/molecule/TarPassPanel.vue; tarpass/clustering.py",
+      "references": [
+        "butina",
+        "morgan",
+        "murcko"
+      ],
+      "translations": {
+        "zh-CN": {
+          "title": "聚类与代表分子选择",
+          "summary": "把相似结构分组，为每组保留选定数量的代表分子。",
+          "details": "",
+          "guidance": "",
+          "range": "",
+          "action": "打开任务与结果",
+          "sections": [
+            {
+              "title": "输入要求",
+              "items": [
+                "TarPass 结果；先应用需要的筛选条件和表头排序。"
+              ],
+              "ordered": false
+            },
+            {
+              "title": "操作步骤",
+              "items": [
+                "展开“聚类与代表选择”，勾选启用。",
+                "选择“完整分子”或“骨架”，填写相似度阈值和每簇代表数量。",
+                "需要缩小结果集时勾选“仅显示代表分子”，点击“应用筛选”。",
+                "查看簇编号、簇大小和代表分子标记，再导出。"
+              ],
+              "ordered": true
+            },
+            {
+              "title": "结果与下一步",
+              "items": [
+                "聚类覆盖当前筛选匹配的全部候选；当前排序指标与方向用于代表分子排名。",
+                "切换排序或调整筛选后，重新应用聚类以更新代表选择。"
+              ],
+              "ordered": false
+            }
+          ]
+        },
+        "en-US": {
+          "title": "Clustering and representatives",
+          "summary": "Group similar structures and retain a chosen number of representatives per cluster.",
+          "details": "",
+          "guidance": "",
+          "range": "",
+          "action": "Open Tasks & Results",
+          "sections": [
+            {
+              "title": "Inputs",
+              "items": [
+                "TarPass results with the desired filters and table sorting already applied."
+              ],
+              "ordered": false
+            },
+            {
+              "title": "Steps",
+              "items": [
+                "Expand Clustering and representatives and enable it.",
+                "Choose whole molecule or scaffold, then set similarity threshold and representatives per cluster.",
+                "Enable Representatives only to narrow the result set, then click Apply filters.",
+                "Inspect cluster IDs, cluster sizes and representative labels, then export."
+              ],
+              "ordered": true
+            },
+            {
+              "title": "Results and next steps",
+              "items": [
+                "Clustering covers all candidates matching the current filters. The sort metric and direction determine representative ranking.",
+                "Reapply clustering after changing the sort or filters to update the representatives."
+              ],
+              "ordered": false
+            }
+          ]
+        }
+      },
+      "guide_section": "basics",
+      "route": "/results",
+      "related": [
+        "filtering",
+        "exports",
+        "tarpass"
+      ]
+    },
+    {
+      "id": "exports",
+      "group": "guides",
+      "model": "tarpass",
+      "keys": [
+        "format",
+        "pose"
+      ],
+      "aliases": [
+        "导出",
+        "SDF",
+        "CSV"
+      ],
+      "unit": "",
+      "source": "genova_frontend/src/components/molecule/TarPassPanel.vue; backend/services/result_exports.py",
+      "references": [],
+      "translations": {
+        "zh-CN": {
+          "title": "导出结果",
+          "summary": "按所需内容下载生成文件、筛选表格或三维分子结构。",
+          "details": "",
+          "guidance": "",
+          "range": "",
+          "action": "打开任务与结果",
+          "sections": [
+            {
+              "title": "输入要求",
+              "items": [
+                "打开已完成的生成、优化或 TarPass 任务结果。"
+              ],
+              "ordered": false
+            },
+            {
+              "title": "操作步骤",
+              "items": [
+                "生成结果：SurfGen 点击“下载 SDF”；ECloudGen 点击“下载 CSV”。",
+                "先导优化结果：DELETE 下载 CSV 或 SDF；EPSO 下载 CSV、轨迹或元数据。",
+                "TarPass 结果：先应用筛选与聚类，再点击“导出筛选后的 CSV”保存分子和指标。",
+                "点击“导出筛选后的 SDF”，选择“原始姿态”或“对接姿态”；ECloudGen / EPSO 的三维结果选择“对接姿态”。"
+              ],
+              "ordered": true
+            },
+            {
+              "title": "结果与下一步",
+              "items": [
+                "TarPass 导出当前条件下全部匹配记录。分子 ID 可用于关联 CSV 指标与 SDF 结构。",
+                "智能助手的候选集合支持 CSV、SDF 和 JSON，可在集合卡片的“导出”中选择。"
+              ],
+              "ordered": false
+            }
+          ]
+        },
+        "en-US": {
+          "title": "Exporting results",
+          "summary": "Download generated files, filtered tables or 3D molecular structures.",
+          "details": "",
+          "guidance": "",
+          "range": "",
+          "action": "Open Tasks & Results",
+          "sections": [
+            {
+              "title": "Inputs",
+              "items": [
+                "Open a completed generation, optimization or TarPass result."
+              ],
+              "ordered": false
+            },
+            {
+              "title": "Steps",
+              "items": [
+                "Generation: choose Download SDF for SurfGen or Download CSV for ECloudGen.",
+                "Optimization: download CSV or SDF for DELETE; download CSV, trajectory or metadata for EPSO.",
+                "In TarPass, apply filters and clustering, then choose Export filtered CSV for molecules and metrics.",
+                "Choose Export filtered SDF and select Original or Docked. Choose Docked for ECloudGen / EPSO 3D results."
+              ],
+              "ordered": true
+            },
+            {
+              "title": "Results and next steps",
+              "items": [
+                "TarPass exports all matching records under the applied conditions. Use molecule IDs to link CSV metrics to SDF structures.",
+                "Assistant candidate collections offer CSV, SDF and JSON through Export on the collection card."
+              ],
+              "ordered": false
+            }
+          ]
+        }
+      },
+      "guide_section": "basics",
+      "route": "/results",
+      "related": [
+        "filtering",
+        "pose-stages",
+        "clustering",
+        "tasks-results"
+      ]
+    },
+    {
+      "id": "workflow-overview",
+      "keys": [],
+      "aliases": [],
+      "unit": "",
+      "references": [],
+      "group": "guides",
+      "guide_section": "basics",
+      "model": "common",
+      "route": "/protein-preparation",
+      "source": "genova_frontend/src/pages/protein-preparation/index.vue; genova_frontend/src/pages/postprocessing/index.vue",
+      "related": [
+        "inputs",
+        "protein-preparation",
+        "molecule-generation",
+        "lead-optimization",
+        "tarpass",
+        "exports"
+      ],
+      "translations": {
+        "zh-CN": {
+          "title": "从输入到结果",
+          "summary": "按“准备蛋白 → 生成或优化分子 → 后处理 → 筛选与导出”完成一次设计。",
+          "details": "",
+          "guidance": "",
+          "range": "",
+          "action": "开始准备蛋白",
+          "sections": [
+            {
+              "title": "输入要求",
+              "items": [
+                "蛋白结构文件；需要参考配体时，准备结构内配体或 SDF、MOL、MOL2 文件。"
+              ],
+              "ordered": false
+            },
+            {
+              "title": "操作步骤",
+              "items": [
+                "进入“蛋白准备”，上传或选择结构，完成准备并保存蛋白环境（Context）。",
+                "进入“从头分子生成”选择 SurfGen / ECloudGen，或进入“先导优化”选择 DELETE / EPSO，填写数量与任务名后提交。",
+                "在“任务与结果”打开已完成任务，查看分子；点击“在后处理中打开”进入 TarPass。",
+                "提交后处理任务，在结果中应用筛选、排序和聚类，再导出 CSV 或 SDF。"
+              ],
+              "ordered": true
+            },
+            {
+              "title": "结果与下一步",
+              "items": [
+                "CSV 用于保存分子与指标；SDF 用于保存三维结构。EPSO 结果还可下载轨迹和元数据。"
+              ],
+              "ordered": false
+            }
+          ]
+        },
+        "en-US": {
+          "title": "From inputs to results",
+          "summary": "Prepare a protein, generate or optimize molecules, run postprocessing, then filter and export.",
+          "details": "",
+          "guidance": "",
+          "range": "",
+          "action": "Prepare a protein",
+          "sections": [
+            {
+              "title": "Inputs",
+              "items": [
+                "A protein structure and, when used, an embedded ligand or an SDF, MOL or MOL2 reference ligand."
+              ],
+              "ordered": false
+            },
+            {
+              "title": "Steps",
+              "items": [
+                "Open Protein Preparation, upload or select a structure, prepare it and save a Protein Context.",
+                "Open De Novo Generation for SurfGen / ECloudGen or Lead Optimization for DELETE / EPSO. Set the count and task name, then submit.",
+                "Open the completed task in Tasks & Results. Inspect molecules and choose Open in Postprocessing for TarPass.",
+                "Submit postprocessing. Apply result filters, sorting and clustering, then export CSV or SDF."
+              ],
+              "ordered": true
+            },
+            {
+              "title": "Results and next steps",
+              "items": [
+                "CSV stores molecules and metrics; SDF stores 3D structures. EPSO also provides trajectory and metadata files."
+              ],
+              "ordered": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "protein-preparation",
+      "keys": [],
+      "aliases": [],
+      "unit": "",
+      "references": [],
+      "group": "guides",
+      "guide_section": "modules",
+      "model": "protein_preparation",
+      "route": "/protein-preparation",
+      "source": "genova_frontend/src/components/protein-preparation/TwoStagePreparation.vue",
+      "related": [
+        "inputs",
+        "molecule-generation",
+        "lead-optimization"
+      ],
+      "translations": {
+        "zh-CN": {
+          "title": "蛋白准备操作说明",
+          "summary": "把蛋白结构准备成可用于生成、优化和后处理的蛋白环境。",
+          "details": "",
+          "guidance": "",
+          "range": "",
+          "action": "打开蛋白准备",
+          "sections": [
+            {
+              "title": "输入要求",
+              "items": [
+                "PDB、CIF 或 mmCIF 结构；按需要准备参考配体文件。"
+              ],
+              "ordered": false
+            },
+            {
+              "title": "操作步骤",
+              "items": [
+                "上传结构，或从“数据资源”选择已有结构。",
+                "填写结构名称，选择全部蛋白链或指定链，并选择保留的其他组分。",
+                "按需要在“高级设置”中调整缺失原子修复、修饰标准化、质子化和能量最小化，点击“开始准备”。",
+                "准备完成后点击“下一步：选择位点”；已有准备结构可从“使用已准备结构”直接进入。",
+                "用配体、残基或坐标定义位点，设置盒子中心和尺寸，选择参考配体并填写 Context 名称。",
+                "点击“保存 Context”，查看各模型的兼容性状态，再进入生成或优化模块。"
+              ],
+              "ordered": true
+            },
+            {
+              "title": "结果与下一步",
+              "items": [
+                "左侧查看准备后的结构、位点和盒子；“下载完整报告”保存结构处理详情。",
+                "从设计模块进入时，点击“返回设计模块”带入保存的 Context。"
+              ],
+              "ordered": false
+            },
+            {
+              "title": "处理方法",
+              "items": [
+                "需要调整输入：点击“修改输入并创建新准备”。需要调整位点：从原模块点击“编辑 / 重新准备”。"
+              ],
+              "ordered": false
+            }
+          ]
+        },
+        "en-US": {
+          "title": "Protein Preparation",
+          "summary": "Create a Protein Context for generation, optimization and postprocessing.",
+          "details": "",
+          "guidance": "",
+          "range": "",
+          "action": "Open Protein Preparation",
+          "sections": [
+            {
+              "title": "Inputs",
+              "items": [
+                "A PDB, CIF or mmCIF structure and a reference ligand file when required."
+              ],
+              "ordered": false
+            },
+            {
+              "title": "Steps",
+              "items": [
+                "Upload a structure or choose one from Data Resources.",
+                "Name the structure, choose all protein chains or selected chains, and select other components to retain.",
+                "Use Advanced settings for missing-atom repair, modification standardization, protonation and energy minimization, then click Start preparation.",
+                "When complete, click Next: select a site. To reuse a prepared structure, choose Use a prepared structure.",
+                "Define the site with a ligand, residues or coordinates. Set the box center and size, choose a reference ligand and name the Context.",
+                "Click Save Context, review model compatibility, then open generation or optimization."
+              ],
+              "ordered": true
+            },
+            {
+              "title": "Results and next steps",
+              "items": [
+                "Inspect the prepared structure, site and box on the left. Download the full report for processing details.",
+                "When opened from a design module, use Return to design module to carry the saved Context back."
+              ],
+              "ordered": false
+            },
+            {
+              "title": "Solutions",
+              "items": [
+                "To change the input, choose Edit input and create a new preparation. To change the site, use Edit / reprepare in the original module."
+              ],
+              "ordered": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "molecule-generation",
+      "keys": [],
+      "aliases": [],
+      "unit": "",
+      "references": [],
+      "group": "guides",
+      "guide_section": "modules",
+      "model": "common",
+      "route": "/molgen",
+      "source": "genova_frontend/src/pages/molgen/index.vue; genova_frontend/src/pages/molgen/results.vue",
+      "related": [
+        "inputs",
+        "surfgen",
+        "ecloudgen",
+        "tarpass",
+        "exports"
+      ],
+      "translations": {
+        "zh-CN": {
+          "title": "从头分子生成操作说明",
+          "summary": "使用 SurfGen 或 ECloudGen，在选定蛋白环境中生成候选分子。",
+          "details": "",
+          "guidance": "",
+          "range": "",
+          "action": "打开从头分子生成",
+          "sections": [
+            {
+              "title": "输入要求",
+              "items": [
+                "已保存且对应模型可用的蛋白环境；ECloudGen 的参考配体可选，无配体时使用保存的位点中心。"
+              ],
+              "ordered": false
+            },
+            {
+              "title": "操作步骤",
+              "items": [
+                "进入“从头分子生成”，在右侧“蛋白环境”中搜索并选择 Context，查看左侧结构。",
+                "在“模型”中选择 SurfGen 或 ECloudGen。",
+                "SurfGen：填写最多返回的有效分子数。ECloudGen：填写目标数量，查看随目标更新的云数量 C 和每云解码次数 D。",
+                "填写任务名；需要调整采样设置或 seed 时展开高级设置。",
+                "点击“提交任务”，在工作台或“任务与结果”跟踪状态，完成后点击“查看结果”。"
+              ],
+              "ordered": true
+            },
+            {
+              "title": "结果与下一步",
+              "items": [
+                "SurfGen：查看分子二维图和三维结构，下载 SDF。ECloudGen：查看二维图，下载 SMILES CSV。",
+                "点击“在后处理中打开”，带入该任务；在 TarPass 中完成评估、筛选与三维结果导出。"
+              ],
+              "ordered": false
+            }
+          ]
+        },
+        "en-US": {
+          "title": "De Novo Generation",
+          "summary": "Generate candidates in a selected Protein Context with SurfGen or ECloudGen.",
+          "details": "",
+          "guidance": "",
+          "range": "",
+          "action": "Open De Novo Generation",
+          "sections": [
+            {
+              "title": "Inputs",
+              "items": [
+                "A saved Context compatible with the selected model. ECloudGen accepts an optional reference ligand and uses the saved site center when absent."
+              ],
+              "ordered": false
+            },
+            {
+              "title": "Steps",
+              "items": [
+                "Open De Novo Generation. Search and select a Protein Context in the parameter panel and inspect its structure on the left.",
+                "Choose SurfGen or ECloudGen in Model.",
+                "For SurfGen, enter the maximum valid molecule count. For ECloudGen, set the target count and review the updated cloud count C and decodes per cloud D.",
+                "Name the task. Open advanced settings to adjust sampling parameters or seed.",
+                "Click Submit task. Track it in Dashboard or Tasks & Results, then choose View results."
+              ],
+              "ordered": true
+            },
+            {
+              "title": "Results and next steps",
+              "items": [
+                "SurfGen: inspect 2D and 3D structures and download SDF. ECloudGen: inspect 2D structures and download SMILES CSV.",
+                "Choose Open in Postprocessing to carry the task into TarPass for evaluation, filtering and 3D export."
+              ],
+              "ordered": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "lead-optimization",
+      "keys": [],
+      "aliases": [],
+      "unit": "",
+      "references": [],
+      "group": "guides",
+      "guide_section": "modules",
+      "model": "common",
+      "route": "/molopt",
+      "source": "genova_frontend/src/pages/molopt/index.vue; genova_frontend/src/pages/molopt/results.vue",
+      "related": [
+        "inputs",
+        "delete",
+        "epso",
+        "tarpass",
+        "exports"
+      ],
+      "translations": {
+        "zh-CN": {
+          "title": "先导优化操作说明",
+          "summary": "DELETE 用于保留片段并生成新结构；EPSO 用于从完整起始分子优化性质。",
+          "details": "",
+          "guidance": "",
+          "range": "",
+          "action": "打开先导优化",
+          "sections": [
+            {
+              "title": "输入要求",
+              "items": [
+                "已准备的蛋白环境；DELETE 需要其中的参考配体，EPSO 可使用 Context 配体或另选单文件、单分子的 SDF。"
+              ],
+              "ordered": false
+            },
+            {
+              "title": "操作步骤",
+              "items": [
+                "进入“先导优化”，选择 DELETE 或 ECloud EPSO，并选择蛋白环境。",
+                "DELETE：选择编辑策略，在候选中选择保留片段；选择“从指定位点生长”时点选连接原子，选择“自定义删除”时在编辑器中删除要替换的部分。",
+                "EPSO 先确认起始配体，需要更换时可以上传或选择 SDF。添加分子性质目标时，设置优化方向或目标区间及权重。要优化亲和力，选择 Gnina 对接能量并设置权重。蛋白环境需要已校验的受体和对接框。待评分的分子越多，对接可能越久。",
+                "填写返回数量和任务名。DELETE 可调整采样设置；EPSO 可在高级参数中调整粒子数、步数和 seed。",
+                "点击“提交任务”，完成后在“任务与结果”点击“查看结果”。"
+              ],
+              "ordered": true
+            },
+            {
+              "title": "结果与下一步",
+              "items": [
+                "DELETE：查看编辑对比和三维结构，下载 CSV 或 SDF。",
+                "EPSO 结果提供 CSV、优化轨迹和元数据。启用亲和力目标时，对接能量越低越好，改善量为正表示能量低于起始配体。",
+                "在结果页打开后处理，继续做 TarPass 评估、筛选和对接姿态导出。"
+              ],
+              "ordered": false
+            },
+            {
+              "title": "处理方法",
+              "items": [
+                "DELETE 候选为空：切换编辑策略或使用自定义删除。需要更换参考配体：点击“编辑位点 / 参考配体”。"
+              ],
+              "ordered": false
+            }
+          ]
+        },
+        "en-US": {
+          "title": "Lead Optimization",
+          "summary": "Use DELETE to grow from retained fragments, or EPSO to optimize properties from a complete seed.",
+          "details": "",
+          "guidance": "",
+          "range": "",
+          "action": "Open Lead Optimization",
+          "sections": [
+            {
+              "title": "Inputs",
+              "items": [
+                "A prepared Protein Context. DELETE uses its reference ligand; EPSO uses the Context ligand or a separate SDF file containing one molecule."
+              ],
+              "ordered": false
+            },
+            {
+              "title": "Steps",
+              "items": [
+                "Open Lead Optimization, choose DELETE or ECloud EPSO and select the Protein Context.",
+                "DELETE: choose an edit strategy and a retained fragment. For growth from a selected site, pick the attachment atom. For custom deletion, remove the part to replace in the editor.",
+                "EPSO: confirm the seed or upload or select its SDF. For molecular property objectives, set the direction or target range and the weight. To include affinity, choose Gnina docking energy and set its weight. The Protein Context must have a validated receptor and docking box. Docking takes longer as the number of candidates to score increases.",
+                "Set the return count and task name. Adjust DELETE sampling settings or EPSO particle count, steps and seed in advanced settings.",
+                "Click Submit task. Open View results from Tasks & Results when complete."
+              ],
+              "ordered": true
+            },
+            {
+              "title": "Results and next steps",
+              "items": [
+                "DELETE: inspect edit comparisons and 3D structures; download CSV or SDF.",
+                "EPSO results include a CSV, optimization trajectory and metadata. When affinity is enabled, lower docking energy is better and a positive improvement indicates lower energy than the seed.",
+                "Open postprocessing from the results page for TarPass evaluation, filtering and docked-pose export."
+              ],
+              "ordered": false
+            },
+            {
+              "title": "Solutions",
+              "items": [
+                "If DELETE has no candidates, switch edit strategies or use custom deletion. To replace the reference ligand, choose Edit site / reference ligand."
+              ],
+              "ordered": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "assistant-workflow",
+      "keys": [],
+      "aliases": [],
+      "unit": "",
+      "references": [],
+      "group": "guides",
+      "guide_section": "modules",
+      "model": "common",
+      "route": "/agent",
+      "source": "genova_frontend/src/pages/agent/components/AgentSessionPanel.vue",
+      "related": [
+        "inputs",
+        "protein-preparation",
+        "molecule-generation",
+        "lead-optimization",
+        "tarpass",
+        "exports"
+      ],
+      "translations": {
+        "zh-CN": {
+          "title": "智能助手操作说明",
+          "summary": "用自然语言组织输入准备、分子设计、后处理和候选整理。",
+          "details": "",
+          "guidance": "",
+          "range": "",
+          "action": "打开智能助手",
+          "sections": [
+            {
+              "title": "输入要求",
+              "items": [
+                "可用的模型服务配置，以及蛋白结构、参考配体或已准备的蛋白环境。"
+              ],
+              "ordered": false
+            },
+            {
+              "title": "操作步骤",
+              "items": [
+                "打开“智能助手”，在顶部“模型设置”中添加并选用模型配置。",
+                "新建会话，上传结构与配体，或选择已有 Protein Context。",
+                "描述模型、分子数量和筛选目标，按信息卡补全输入。",
+                "检查方案卡片中的模型、输入和参数；需要调整时打开编辑入口。",
+                "批准方案后执行，在会话中查看各阶段进度和结果。",
+                "在结果中筛选候选、保存候选集，再选择 CSV、SDF 或 JSON 导出。"
+              ],
+              "ordered": true
+            },
+            {
+              "title": "结果与下一步",
+              "items": [
+                "从会话列表恢复已有会话，继续查看方案和结果。",
+                "需要缩小候选集合时，打开结果筛选入口更新选择。",
+                "删除会话会同时删除其中的方案、候选集和工作流；计算任务、文件和结果保留在“任务与结果”中。"
+              ],
+              "ordered": false
+            }
+          ]
+        },
+        "en-US": {
+          "title": "Assistant",
+          "summary": "Use natural language to organize input preparation, design, postprocessing and candidate selection.",
+          "details": "",
+          "guidance": "",
+          "range": "",
+          "action": "Open Assistant",
+          "sections": [
+            {
+              "title": "Inputs",
+              "items": [
+                "A configured model service and a protein, reference ligand or prepared Protein Context."
+              ],
+              "ordered": false
+            },
+            {
+              "title": "Steps",
+              "items": [
+                "Open Assistant. Add and select a model configuration in LLM settings.",
+                "Start a conversation. Upload structures and ligands, or select an existing Protein Context.",
+                "Describe the model, molecule count and filtering goals. Complete any requested information cards.",
+                "Review the model, inputs and parameters on the proposal card. Open its editing controls to make changes.",
+                "Approve the proposal and follow each stage in the conversation.",
+                "Filter results, save a candidate collection, then export CSV, SDF or JSON."
+              ],
+              "ordered": true
+            },
+            {
+              "title": "Results and next steps",
+              "items": [
+                "Resume a conversation from the session list to revisit its plans and results.",
+                "Use the result selection controls to refine a candidate collection.",
+                "Deleting a conversation also removes its proposals, candidate collections and workflows. Tasks, files and results remain in Tasks & Results."
+              ],
+              "ordered": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "datasets-workflow",
+      "keys": [],
+      "aliases": [],
+      "unit": "",
+      "references": [],
+      "group": "guides",
+      "guide_section": "modules",
+      "model": "common",
+      "route": "/datacenter",
+      "source": "genova_frontend/src/pages/datacenter/index.vue",
+      "related": [
+        "inputs",
+        "protein-preparation",
+        "tasks-results"
+      ],
+      "translations": {
+        "zh-CN": {
+          "title": "数据资源操作说明",
+          "summary": "上传、查找和管理结构文件、配体文件及蛋白环境。",
+          "details": "",
+          "guidance": "",
+          "range": "",
+          "action": "打开数据资源",
+          "sections": [
+            {
+              "title": "输入要求",
+              "items": [
+                "蛋白使用 PDB、CIF、mmCIF；配体使用 SDF、MOL、MOL2；分子表格使用 CSV、TSV。"
+              ],
+              "ordered": false
+            },
+            {
+              "title": "操作步骤",
+              "items": [
+                "进入“数据资源”，切换“我的数据”或“内置示例”。",
+                "上传文件，或用名称搜索和文件类型筛选找到已有数据。",
+                "点击预览检查结构或表格内容；一个数据集中有多个结构时，选择具体文件。",
+                "从蛋白数据进入蛋白准备；从就绪蛋白环境进入从头生成或先导优化。",
+                "通过数据项的操作菜单下载、重命名或删除数据。"
+              ],
+              "ordered": true
+            },
+            {
+              "title": "结果与下一步",
+              "items": [
+                "保存的文件可在各模块的“数据资源”选择器中复用。"
+              ],
+              "ordered": false
+            },
+            {
+              "title": "处理方法",
+              "items": [
+                "选择器中找不到文件：检查文件类型，切换“我的数据 / 内置示例”，再按名称查找。",
+                "删除提示数据正在使用时，先处理引用它的 Protein Context、助手会话或运行中的任务。"
+              ],
+              "ordered": false
+            }
+          ]
+        },
+        "en-US": {
+          "title": "Data Resources",
+          "summary": "Upload, find and manage protein structures, ligands and Protein Contexts.",
+          "details": "",
+          "guidance": "",
+          "range": "",
+          "action": "Open Data Resources",
+          "sections": [
+            {
+              "title": "Inputs",
+              "items": [
+                "Proteins: PDB, CIF, mmCIF. Ligands: SDF, MOL, MOL2. Molecule tables: CSV, TSV."
+              ],
+              "ordered": false
+            },
+            {
+              "title": "Steps",
+              "items": [
+                "Open Data Resources and choose My data or Built-in examples.",
+                "Upload files, or find saved data with name search and file-type filters.",
+                "Preview structures or tables. Choose a specific file when a dataset contains multiple structures.",
+                "Open protein data in Protein Preparation, or use a ready Context in generation or optimization.",
+                "Use the data item actions to download, rename or delete it."
+              ],
+              "ordered": true
+            },
+            {
+              "title": "Results and next steps",
+              "items": [
+                "Reuse saved files through the Data Resources selectors in each module."
+              ],
+              "ordered": false
+            },
+            {
+              "title": "Solutions",
+              "items": [
+                "If a file is missing in a selector, check its type, switch My data / Built-in examples and search by name.",
+                "If deletion reports that data is in use, resolve its links to Protein Contexts, Assistant conversations or running tasks first."
+              ],
+              "ordered": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "tasks-results",
+      "keys": [],
+      "aliases": [],
+      "unit": "",
+      "references": [],
+      "group": "guides",
+      "guide_section": "modules",
+      "model": "common",
+      "route": "/results",
+      "source": "genova_frontend/src/pages/dashboard/index.vue; genova_frontend/src/pages/results/index.vue",
+      "related": [
+        "molecule-generation",
+        "lead-optimization",
+        "tarpass",
+        "exports"
+      ],
+      "translations": {
+        "zh-CN": {
+          "title": "任务与结果操作说明",
+          "summary": "查看任务进度、恢复配置、打开结果，并管理关联任务。",
+          "details": "",
+          "guidance": "",
+          "range": "",
+          "action": "打开任务与结果",
+          "sections": [
+            {
+              "title": "输入要求",
+              "items": [
+                "已提交的蛋白准备、生成、优化或后处理任务。"
+              ],
+              "ordered": false
+            },
+            {
+              "title": "操作步骤",
+              "items": [
+                "在“工作台”查看运行中、需处理和最近完成的任务；进入“任务与结果”查看完整列表。",
+                "按模块、状态或任务名称 / ID 搜索；点击任务名称打开详情。",
+                "完成后点击“查看结果”，在结果页浏览分子、下载文件或进入后处理。",
+                "需要复用设置时，在详情中点击“恢复任务参数”，修改后提交新任务。",
+                "删除时勾选任务或点击单条删除，在预览中核对关联对象、文件和保留的数据，再点击确认删除。"
+              ],
+              "ordered": true
+            },
+            {
+              "title": "结果与下一步",
+              "items": [
+                "任务 ID 可用于定位结果；后处理任务的详情可跳转到源生成任务。"
+              ],
+              "ordered": false
+            },
+            {
+              "title": "处理方法",
+              "items": [
+                "任务失败：打开详情中的错误信息，恢复参数并修正输入后重新提交。",
+                "删除预览显示执行中任务：等待该任务结束后重新打开预览。",
+                "任务被助手会话引用时，先在助手历史中删除该会话，再删除任务。"
+              ],
+              "ordered": false
+            }
+          ]
+        },
+        "en-US": {
+          "title": "Tasks & Results",
+          "summary": "Track progress, restore task settings, open results and manage related tasks.",
+          "details": "",
+          "guidance": "",
+          "range": "",
+          "action": "Open Tasks & Results",
+          "sections": [
+            {
+              "title": "Inputs",
+              "items": [
+                "A submitted preparation, generation, optimization or postprocessing task."
+              ],
+              "ordered": false
+            },
+            {
+              "title": "Steps",
+              "items": [
+                "Use Dashboard for running tasks, items needing attention and recent completions. Open Tasks & Results for the full list.",
+                "Filter by module or status, or search by task name / ID. Click a task name for details.",
+                "Choose View results when complete to inspect molecules, download files or open postprocessing.",
+                "Choose Restore task parameters to reuse settings, edit them and submit a new task.",
+                "To delete, select tasks or choose an individual delete action. Review related objects, files and retained data, then confirm."
+              ],
+              "ordered": true
+            },
+            {
+              "title": "Results and next steps",
+              "items": [
+                "Use task IDs to locate results. Postprocessing task details link to the source generation task."
+              ],
+              "ordered": false
+            },
+            {
+              "title": "Solutions",
+              "items": [
+                "If a task fails, read its error details, restore the parameters, correct the inputs and submit again.",
+                "If deletion lists an active task, wait for it to finish and refresh the preview.",
+                "If a task is linked to an Assistant conversation, delete that conversation from Assistant history before deleting the task."
+              ],
+              "ordered": false
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

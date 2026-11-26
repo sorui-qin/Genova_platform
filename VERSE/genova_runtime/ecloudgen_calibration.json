@@ -1,0 +1,140 @@
+{
+  "version": "quantity-v1-dcfa7e40fa00",
+  "cases": [
+    "IMDPH",
+    "adrb1",
+    "drd2"
+  ],
+  "held_out_case": "Eg5",
+  "seeds": [
+    2025,
+    2026,
+    2027
+  ],
+  "noise": 0.1,
+  "batch_size": 32,
+  "pocket_condition": "random vector fixed per cloud",
+  "timing_method": "Measured decoder prefix plus startup; diffusion wall time scaled by cloud count",
+  "rows": [
+    {
+      "num_clouds": 4,
+      "decodes_per_cloud": 32,
+      "unique_p20": 56.2,
+      "seconds_median": 34.95574917717386
+    },
+    {
+      "num_clouds": 4,
+      "decodes_per_cloud": 64,
+      "unique_p20": 99.0,
+      "seconds_median": 35.330505216148595
+    },
+    {
+      "num_clouds": 4,
+      "decodes_per_cloud": 128,
+      "unique_p20": 161.4,
+      "seconds_median": 36.12277515356254
+    },
+    {
+      "num_clouds": 4,
+      "decodes_per_cloud": 256,
+      "unique_p20": 248.2,
+      "seconds_median": 37.57374065754993
+    },
+    {
+      "num_clouds": 4,
+      "decodes_per_cloud": 512,
+      "unique_p20": 371.4,
+      "seconds_median": 40.38757204847934
+    },
+    {
+      "num_clouds": 8,
+      "decodes_per_cloud": 32,
+      "unique_p20": 115.8,
+      "seconds_median": 67.85877741812874
+    },
+    {
+      "num_clouds": 8,
+      "decodes_per_cloud": 64,
+      "unique_p20": 193.2,
+      "seconds_median": 68.60322456109134
+    },
+    {
+      "num_clouds": 8,
+      "decodes_per_cloud": 128,
+      "unique_p20": 312.0,
+      "seconds_median": 70.1169927988376
+    },
+    {
+      "num_clouds": 8,
+      "decodes_per_cloud": 256,
+      "unique_p20": 504.4,
+      "seconds_median": 72.93774454676895
+    },
+    {
+      "num_clouds": 8,
+      "decodes_per_cloud": 512,
+      "unique_p20": 786.2,
+      "seconds_median": 78.5032532808109
+    },
+    {
+      "num_clouds": 16,
+      "decodes_per_cloud": 32,
+      "unique_p20": 242.8,
+      "seconds_median": 133.66242162606795
+    },
+    {
+      "num_clouds": 16,
+      "decodes_per_cloud": 64,
+      "unique_p20": 405.2,
+      "seconds_median": 135.0756535948749
+    },
+    {
+      "num_clouds": 16,
+      "decodes_per_cloud": 128,
+      "unique_p20": 663.8,
+      "seconds_median": 138.04835411327076
+    },
+    {
+      "num_clouds": 16,
+      "decodes_per_cloud": 256,
+      "unique_p20": 1058.6,
+      "seconds_median": 143.56299695713096
+    },
+    {
+      "num_clouds": 16,
+      "decodes_per_cloud": 512,
+      "unique_p20": 1632.8,
+      "seconds_median": 155.16828181323945
+    },
+    {
+      "num_clouds": 32,
+      "decodes_per_cloud": 32,
+      "unique_p20": 466.8,
+      "seconds_median": 265.3026348631538
+    },
+    {
+      "num_clouds": 32,
+      "decodes_per_cloud": 64,
+      "unique_p20": 769.4,
+      "seconds_median": 268.15761477002525
+    },
+    {
+      "num_clouds": 32,
+      "decodes_per_cloud": 128,
+      "unique_p20": 1237.4,
+      "seconds_median": 274.0370019052061
+    },
+    {
+      "num_clouds": 32,
+      "decodes_per_cloud": 256,
+      "unique_p20": 1962.4,
+      "seconds_median": 285.12138908018824
+    },
+    {
+      "num_clouds": 32,
+      "decodes_per_cloud": 512,
+      "unique_p20": 3012.4,
+      "seconds_median": 307.6812896759657
+    }
+  ]
+}

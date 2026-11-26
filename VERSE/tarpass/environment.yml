@@ -1,0 +1,20 @@
+name: tarpass
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - rdkit=2025.03.6
+  - biopython=1.85
+  - openbabel=3.1.1
+  - numpy=1.26.4
+  - scipy=1.14.1
+  - networkx=3.4
+  - lxml=5.3
+  - pandas=2.2
+  - pip
+  - setuptools
+  - wheel
+  - requests
+  - pip:
+      - posebusters==0.6.0
+      - redis==5.2.1

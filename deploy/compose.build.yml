@@ -1,0 +1,67 @@
+x-release-labels: &release-labels
+  org.opencontainers.image.version: ${PLATFORM_VERSION:?Set PLATFORM_VERSION}
+  org.opencontainers.image.revision: ${SOURCE_REVISION:-unknown}
+  org.opencontainers.image.created: ${BUILD_CREATED:-unknown}
+
+services:
+  backend-api:
+    build:
+      context: ../VERSE
+      dockerfile: backend/Dockerfile
+      labels: *release-labels
+  backend-worker:
+    build:
+      context: ../VERSE
+      dockerfile: backend/Dockerfile
+      labels: *release-labels
+  workflow-worker:
+    build:
+      context: ../VERSE
+      dockerfile: backend/Dockerfile
+      labels: *release-labels
+  dispatcher:
+    build:
+      context: ../VERSE
+      dockerfile: backend/Dockerfile
+      labels: *release-labels
+  worker-protein-preparation:
+    build:
+      context: ../VERSE
+      dockerfile: protein-preparation-worker.Dockerfile
+      labels: *release-labels
+  worker-surfgen:
+    build:
+      context: ../VERSE
+      dockerfile: ../deploy/surfgen.Dockerfile
+      labels: *release-labels
+      args:
+        SURFGEN_BASE_IMAGE: ${SURFGEN_BASE_IMAGE:?Set SURFGEN_BASE_IMAGE to an available released SurfGen image}
+  worker-tarpass:
+    build:
+      context: ../VERSE
+      dockerfile: tarpass/Dockerfile
+      labels: *release-labels
+  worker-ecloudgen:
+    build:
+      context: ..
+      dockerfile: deploy/ecloudgen.Dockerfile
+      labels: *release-labels
+      args:
+        ECLOUDGEN_BASE_IMAGE: ${ECLOUDGEN_BASE_IMAGE:-ecloudgen:latest}
+  worker-epso:
+    build:
+      context: ../VERSE
+      dockerfile: ../deploy/epso.Dockerfile
+      labels: *release-labels
+      additional_contexts:
+        ecloudgen: service:worker-ecloudgen
+        tarpass: service:worker-tarpass
+  worker-delete:
+    build:
+      context: ../VERSE
+      dockerfile: ../deploy/delete.Dockerfile
+      labels: *release-labels
+  frontend:
+    build:
+      context: ../genova_frontend
+      labels: *release-labels

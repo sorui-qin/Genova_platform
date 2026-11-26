@@ -1,0 +1,17 @@
+.env
+data/
+**/.git.nested/
+**/__pycache__/
+**/*.pyc
+
+backend/tests/
+backend/agent/test_*.py
+backend/agent/knowledge/tests/
+backend/agent/skills/tests/
+backend/agent/evaluate.py
+backend/agent/evaluate_long.py
+genova_runtime/test_helpers.py
+
+backend/agent/scenario_tests/
+backend/agent/knowledge/fixtures.py
+tarpass/benchmark.py

@@ -1,0 +1,19 @@
+.module-workbench { min-height: 0; min-width: 0; height: 100%; overflow: hidden; background: white; }
+.workbench-toolbar { display: flex; flex: 0 0 auto; min-height: 48px; flex-wrap: wrap; align-items: center; gap: 8px 12px; border-bottom: 1px solid var(--border-default); background: var(--surface); padding: 8px 16px; }
+.workbench-toolbar h2 { font-size: 14px; font-weight: 600; line-height: 20px; }
+.workbench-form { min-width: 0; font-size: 14px; line-height: 20px; }
+.workbench-form > * + * { margin-top: 16px; }
+.workbench-section { min-width: 0; border: 1px solid var(--border-default); border-radius: 8px; padding: 12px; background: white; }
+.workbench-section > * + * { margin-top: 12px; }
+.workbench-section h2 { font-size: 14px; font-weight: 600; }
+.workbench-results .workspace-main { overflow: hidden; }
+.workbench-result-body { display: flex; flex: 1 1 0%; min-height: 0; flex-direction: column; gap: 12px; overflow: auto; padding: 16px; }
+.workbench-result-body > * { flex-shrink: 0; }
+.workbench-result-body > .workbench-table-area { display: flex; flex: 1 1 0%; min-height: 0; flex-direction: column; gap: 12px; }
+.workbench-table-scroll { flex: 1 1 0%; min-height: 0; overflow: auto; overscroll-behavior: contain; border: 1px solid var(--border-default); border-radius: 8px; background: white; }
+.module-workbench .workbench-table-scroll table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13px; line-height: 20px; }
+.module-workbench .workbench-table-scroll th { position: sticky; top: 0; z-index: 1; border-bottom: 1px solid var(--border-default); background: var(--surface-subtle, #f8fafc); padding: 10px 12px; text-align: left; font-size: 12px; font-weight: 600; color: var(--text-secondary); white-space: nowrap; }
+.module-workbench .workbench-table-scroll td { border-bottom: 1px solid var(--border-default); padding: 8px 12px; vertical-align: middle; font-variant-numeric: tabular-nums; }
+.module-workbench .workbench-table-scroll tbody tr:last-child td { border-bottom: 0; }
+.workbench-pagination { display: flex; flex: 0 0 auto; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px; font-size: 12px; }
+@media (max-width: 767px) { .workbench-toolbar { padding: 8px 12px; } .workbench-result-body { padding: 12px; } }

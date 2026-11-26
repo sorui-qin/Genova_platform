@@ -1,0 +1,11 @@
+**
+!VERSE/
+!VERSE/delete-image-clean.py
+!VERSE/delete-runtime-patch.py
+!VERSE/genova_runtime/
+!VERSE/genova_runtime/**
+!VERSE/builtin_datasets/
+!VERSE/builtin_datasets/**
+**/__pycache__/
+**/*.pyc
+**/test_*.py
